@@ -8,9 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		19DEDBAF1CCA000B00F79E47 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DEDBAE1CCA000B00F79E47 /* User.swift */; };
-		19DEDBB31CCA013800F79E47 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DEDBB21CCA013800F79E47 /* SignUpViewController.swift */; };
 		7867DB3EC1FCBF50F54BDA23 /* Pods_ios_instagram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F62BE3F0933BC122C136A46E /* Pods_ios_instagram.framework */; };
-		B931D4F41CCA0FBF004ED804 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B931D4F31CCA0FBF004ED804 /* SignUpViewController.swift */; };
+		B9ACF5781CCA11C600D6EB3B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ACF5771CCA11C600D6EB3B /* SignUpViewController.swift */; };
 		B9C0A5481CC9E0FB00E30EF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C0A5471CC9E0FB00E30EF1 /* AppDelegate.swift */; };
 		B9C0A54A1CC9E0FB00E30EF1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C0A5491CC9E0FB00E30EF1 /* LoginViewController.swift */; };
 		B9C0A54D1CC9E0FB00E30EF1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9C0A54B1CC9E0FB00E30EF1 /* Main.storyboard */; };
@@ -26,9 +25,8 @@
 
 /* Begin PBXFileReference section */
 		19DEDBAE1CCA000B00F79E47 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		19DEDBB21CCA013800F79E47 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		81866433A10A031594ED900A /* Pods-ios_instagram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios_instagram.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios_instagram/Pods-ios_instagram.debug.xcconfig"; sourceTree = "<group>"; };
-		B931D4F31CCA0FBF004ED804 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		B9ACF5771CCA11C600D6EB3B /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		B9C0A5441CC9E0FB00E30EF1 /* ios_instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ios_instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9C0A5471CC9E0FB00E30EF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9C0A5491CC9E0FB00E30EF1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -135,8 +133,8 @@
 		B9C0A56B1CC9F43F00E30EF1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B9ACF5771CCA11C600D6EB3B /* SignUpViewController.swift */,
 				B9C0A5491CC9E0FB00E30EF1 /* LoginViewController.swift */,
-				B931D4F31CCA0FBF004ED804 /* SignUpViewController.swift */,
 				B9C0A56D1CC9FC6600E30EF1 /* GalleryViewController.swift */,
 				B9C0A5691CC9F43300E30EF1 /* HomeViewController.swift */,
 			);
@@ -280,12 +278,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9C0A56A1CC9F43300E30EF1 /* HomeViewController.swift in Sources */,
-				19DEDBB31CCA013800F79E47 /* SignUpViewController.swift in Sources */,
 				B9C0A54A1CC9E0FB00E30EF1 /* LoginViewController.swift in Sources */,
+				B9ACF5781CCA11C600D6EB3B /* SignUpViewController.swift in Sources */,
 				B9C0A5481CC9E0FB00E30EF1 /* AppDelegate.swift in Sources */,
 				B9C0A56E1CC9FC6600E30EF1 /* GalleryViewController.swift in Sources */,
 				B9C0A55E1CC9E1FF00E30EF1 /* Constants.swift in Sources */,
-				B931D4F41CCA0FBF004ED804 /* SignUpViewController.swift in Sources */,
 				19DEDBAF1CCA000B00F79E47 /* User.swift in Sources */,
 				B9C0A5611CC9E24100E30EF1 /* DataServices.swift in Sources */,
 			);
