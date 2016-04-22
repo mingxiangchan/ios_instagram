@@ -25,17 +25,19 @@ class SignUpViewController: UIViewController {
         
         if let email = emailTextField.text, password = paswordTextField.text
         {
-            DataServices.dataService.BASE_REF.createUser(email:email, password: password, withValueCompletionBlock: {
+            DataServices.dataService.BASE_REF.createUser(email, password: password, withValueCompletionBlock: {
                 (error,result) -> Void in
                 if (error == nil)
                 {
                     let uid = result ["uid"]as? String
-                    let userDict = ["email":email, "password":password]
+                    let userDict = ["email":email]
                     let currentUser = DataServices.dataService.BASE_REF.childByAppendingPath("users").childByAppendingPath(uid)
                     currentUser.setValue(userDict)
                     NSUserDefaults.standardUserDefaults().setValue(uid, forKey: "uid")
+                    print("signedUp")
                 }
                 else{
+                    
                     print(error)
                 }
             })

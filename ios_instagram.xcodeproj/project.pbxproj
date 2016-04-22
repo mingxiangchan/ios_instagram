@@ -87,7 +87,6 @@
 		B9C0A53B1CC9E0FB00E30EF1 = {
 			isa = PBXGroup;
 			children = (
-				B9C0A54B1CC9E0FB00E30EF1 /* Main.storyboard */,
 				B9C0A5461CC9E0FB00E30EF1 /* ios_instagram */,
 				B9C0A5451CC9E0FB00E30EF1 /* Products */,
 				7BDC097B2D3C15F05D3A4926 /* Pods */,
@@ -112,6 +111,7 @@
 				B9C0A54E1CC9E0FB00E30EF1 /* Assets.xcassets */,
 				B9C0A5531CC9E0FB00E30EF1 /* Info.plist */,
 				B9C0A5471CC9E0FB00E30EF1 /* AppDelegate.swift */,
+				B9C0A54B1CC9E0FB00E30EF1 /* Main.storyboard */,
 				B9C0A5501CC9E0FB00E30EF1 /* LaunchScreen.storyboard */,
 				B9C0A55B1CC9E12D00E30EF1 /* TabRouting.storyboard */,
 				B9C0A55F1CC9E22A00E30EF1 /* Constants */,
@@ -170,6 +170,7 @@
 				TargetAttributes = {
 					B9C0A5431CC9E0FB00E30EF1 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = VWX3JCB956;
 					};
 				};
 			};
@@ -276,7 +277,6 @@
 				B9C0A54C1CC9E0FB00E30EF1 /* Base */,
 			);
 			name = Main.storyboard;
-			path = ios_instagram;
 			sourceTree = "<group>";
 		};
 		B9C0A5501CC9E0FB00E30EF1 /* LaunchScreen.storyboard */ = {
@@ -380,10 +380,13 @@
 			baseConfigurationReference = 81866433A10A031594ED900A /* Pods-ios_instagram.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ios_instagram/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nextacademy.ios-instagram";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -392,10 +395,13 @@
 			baseConfigurationReference = ED0698F7865D8F2BEDCD1407 /* Pods-ios_instagram.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ios_instagram/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nextacademy.ios-instagram";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

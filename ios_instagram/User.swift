@@ -16,9 +16,9 @@ class User{
     }
     
     init (key: String, dict: [String : AnyObject]){
-        self.-_userkey=key
+        self._userkey=key
         if let username = dict ["username"] as? String{
-            self.usrname=username
+            self.username = username
         }
     }
 }
