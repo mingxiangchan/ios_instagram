@@ -16,6 +16,7 @@
 		B9C0A55C1CC9E12D00E30EF1 /* TabRouting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9C0A55B1CC9E12D00E30EF1 /* TabRouting.storyboard */; };
 		B9C0A55E1CC9E1FF00E30EF1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C0A55D1CC9E1FF00E30EF1 /* Constants.swift */; };
 		B9C0A5611CC9E24100E30EF1 /* DataServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C0A5601CC9E24100E30EF1 /* DataServices.swift */; };
+		B9C0A5641CC9ECA900E30EF1 /* UploadingImages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9C0A5631CC9ECA900E30EF1 /* UploadingImages.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		B9C0A55B1CC9E12D00E30EF1 /* TabRouting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = TabRouting.storyboard; path = ../TabRouting.storyboard; sourceTree = "<group>"; };
 		B9C0A55D1CC9E1FF00E30EF1 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B9C0A5601CC9E24100E30EF1 /* DataServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataServices.swift; sourceTree = "<group>"; };
+		B9C0A5631CC9ECA900E30EF1 /* UploadingImages.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UploadingImages.storyboard; sourceTree = "<group>"; };
 		ED0698F7865D8F2BEDCD1407 /* Pods-ios_instagram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios_instagram.release.xcconfig"; path = "Pods/Target Support Files/Pods-ios_instagram/Pods-ios_instagram.release.xcconfig"; sourceTree = "<group>"; };
 		F62BE3F0933BC122C136A46E /* Pods_ios_instagram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios_instagram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -87,6 +89,7 @@
 				B9C0A5621CC9E2C200E30EF1 /* Utilities */,
 				B9C0A55F1CC9E22A00E30EF1 /* Constants */,
 				B9C0A55B1CC9E12D00E30EF1 /* TabRouting.storyboard */,
+				B9C0A5631CC9ECA900E30EF1 /* UploadingImages.storyboard */,
 				B9C0A5471CC9E0FB00E30EF1 /* AppDelegate.swift */,
 				B9C0A5491CC9E0FB00E30EF1 /* ViewController.swift */,
 				B9C0A54B1CC9E0FB00E30EF1 /* Main.storyboard */,
@@ -177,6 +180,7 @@
 				B9C0A5521CC9E0FB00E30EF1 /* LaunchScreen.storyboard in Resources */,
 				B9C0A54F1CC9E0FB00E30EF1 /* Assets.xcassets in Resources */,
 				B9C0A54D1CC9E0FB00E30EF1 /* Main.storyboard in Resources */,
+				B9C0A5641CC9ECA900E30EF1 /* UploadingImages.storyboard in Resources */,
 				B9C0A55C1CC9E12D00E30EF1 /* TabRouting.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
