@@ -17,6 +17,7 @@
 		B9C0A55E1CC9E1FF00E30EF1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C0A55D1CC9E1FF00E30EF1 /* Constants.swift */; };
 		B9C0A5611CC9E24100E30EF1 /* DataServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C0A5601CC9E24100E30EF1 /* DataServices.swift */; };
 		B9C0A5641CC9ECA900E30EF1 /* UploadingImages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9C0A5631CC9ECA900E30EF1 /* UploadingImages.storyboard */; };
+		B9C0A56A1CC9F43300E30EF1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C0A5691CC9F43300E30EF1 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		B9C0A55D1CC9E1FF00E30EF1 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B9C0A5601CC9E24100E30EF1 /* DataServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataServices.swift; sourceTree = "<group>"; };
 		B9C0A5631CC9ECA900E30EF1 /* UploadingImages.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UploadingImages.storyboard; sourceTree = "<group>"; };
+		B9C0A5691CC9F43300E30EF1 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		ED0698F7865D8F2BEDCD1407 /* Pods-ios_instagram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios_instagram.release.xcconfig"; path = "Pods/Target Support Files/Pods-ios_instagram/Pods-ios_instagram.release.xcconfig"; sourceTree = "<group>"; };
 		F62BE3F0933BC122C136A46E /* Pods_ios_instagram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios_instagram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -87,14 +89,11 @@
 			isa = PBXGroup;
 			children = (
 				B9C0A5621CC9E2C200E30EF1 /* Utilities */,
+				B9C0A56B1CC9F43F00E30EF1 /* Controllers */,
 				B9C0A55F1CC9E22A00E30EF1 /* Constants */,
-				B9C0A55B1CC9E12D00E30EF1 /* TabRouting.storyboard */,
-				B9C0A5631CC9ECA900E30EF1 /* UploadingImages.storyboard */,
-				B9C0A5471CC9E0FB00E30EF1 /* AppDelegate.swift */,
+				B9C0A56C1CC9F47500E30EF1 /* Storyboards */,
 				B9C0A5491CC9E0FB00E30EF1 /* ViewController.swift */,
-				B9C0A54B1CC9E0FB00E30EF1 /* Main.storyboard */,
 				B9C0A54E1CC9E0FB00E30EF1 /* Assets.xcassets */,
-				B9C0A5501CC9E0FB00E30EF1 /* LaunchScreen.storyboard */,
 				B9C0A5531CC9E0FB00E30EF1 /* Info.plist */,
 			);
 			path = ios_instagram;
@@ -111,9 +110,29 @@
 		B9C0A5621CC9E2C200E30EF1 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				B9C0A5471CC9E0FB00E30EF1 /* AppDelegate.swift */,
 				B9C0A5601CC9E24100E30EF1 /* DataServices.swift */,
 			);
 			name = Utilities;
+			sourceTree = "<group>";
+		};
+		B9C0A56B1CC9F43F00E30EF1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B9C0A5691CC9F43300E30EF1 /* HomeViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		B9C0A56C1CC9F47500E30EF1 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				B9C0A55B1CC9E12D00E30EF1 /* TabRouting.storyboard */,
+				B9C0A5631CC9ECA900E30EF1 /* UploadingImages.storyboard */,
+				B9C0A54B1CC9E0FB00E30EF1 /* Main.storyboard */,
+				B9C0A5501CC9E0FB00E30EF1 /* LaunchScreen.storyboard */,
+			);
+			name = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,6 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9C0A56A1CC9F43300E30EF1 /* HomeViewController.swift in Sources */,
 				B9C0A54A1CC9E0FB00E30EF1 /* ViewController.swift in Sources */,
 				B9C0A5481CC9E0FB00E30EF1 /* AppDelegate.swift in Sources */,
 				B9C0A55E1CC9E1FF00E30EF1 /* Constants.swift in Sources */,
