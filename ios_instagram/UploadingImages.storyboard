@@ -121,10 +121,14 @@
                     <navigationItem key="navigationItem" title="Gallery" id="Lab-9Z-Sdg">
                         <barButtonItem key="leftBarButtonItem" title="&lt; Home" id="55b-Bp-A7Q">
                             <connections>
-                                <segue destination="aIV-9q-Ja5" kind="unwind" unwindAction="unwindToHome:" id="jOI-aJ-8Xz"/>
+                                <segue destination="aIV-9q-Ja5" kind="unwind" identifier="unwindToHomeSegue" unwindAction="unwindToHome:" id="jOI-aJ-8Xz"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="→" id="XQA-xM-E95"/>
+                        <barButtonItem key="rightBarButtonItem" title="→" id="XQA-xM-E95">
+                            <connections>
+                                <action selector="onUploadButtonPressed:" destination="GIr-U2-oxd" id="7sX-95-PbU"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="galleryCollectionVIew" destination="lco-p5-AFF" id="cDs-0D-RyN"/>

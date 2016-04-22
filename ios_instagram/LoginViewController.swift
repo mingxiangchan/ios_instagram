@@ -23,9 +23,9 @@ class LoginViewController: UIViewController {
         if currentUserID != nil{
             if DataServices.dataService.USER_REF.childByAppendingPath(currentUserID)!.authData != nil{
                 notificationLabel.text = "You're Signed up // DO SEGUE"
+                self.performSegueWithIdentifier("redirectToTabRoutingSegue", sender: self)
             }
         }
-        
     }
     
     
