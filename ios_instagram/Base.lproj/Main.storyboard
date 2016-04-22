@@ -88,6 +88,7 @@
                         <outlet property="emailTextField" destination="e7q-oQ-EQ4" id="zai-SE-atu"/>
                         <outlet property="notificationLabel" destination="8MO-1h-3zx" id="DVe-J1-jwg"/>
                         <outlet property="passwordtextField" destination="j3R-bC-JgM" id="CLa-er-2eO"/>
+                        <segue destination="CCA-T0-FK2" kind="show" identifier="redirectToTabRoutingSegue" id="SGV-Kl-Itw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -38,6 +38,7 @@ class LoginViewController: UIViewController {
                 if (error == nil){
                     NSUserDefaults.standardUserDefaults().setValue(authData.uid, forKey: "uid")
                     self.notificationLabel.text = "You're logged in // DO SEGUE"
+                    self.performSegueWithIdentifier("redirectToTabRoutingSegue", sender: self)
                 }else{
                     print(error)
                     self.notificationLabel.text = "something's wrong"

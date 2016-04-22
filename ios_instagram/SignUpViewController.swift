@@ -35,6 +35,7 @@ class SignUpViewController: UIViewController {
                     currentUser.setValue(userDict)
                     NSUserDefaults.standardUserDefaults().setValue(uid, forKey: "uid")
                     print("signedUp")
+                    self.performSegueWithIdentifier("redirectToTabRoutingSegue", sender: self)
                 }
                 else{
                     
