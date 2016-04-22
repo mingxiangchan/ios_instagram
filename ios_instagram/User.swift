@@ -1,6 +1,6 @@
 //
 //  User.swift
-//  
+//
 //
 //  Created by Abdo Assem on 4/22/16.
 //
@@ -20,5 +20,5 @@ class User{
         if let username = dict ["username"] as? String{
             self.usrname=username
         }
-}
+    }
 }
