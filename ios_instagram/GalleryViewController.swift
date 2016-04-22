@@ -51,6 +51,7 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
     }
 
     func checkImageAuthorization() -> Bool{
+        //check for permission to access file system assets
         let status = PHPhotoLibrary.authorizationStatus()
         switch status {
         case .Authorized:
@@ -80,6 +81,7 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
         let imageWidth = (self.view.frame.size.width - 40)/4
         imageView.frame = CGRectMake(0, 0, imageWidth, imageWidth)
         imageView.image = image
+        // set cell to semi transparent if selected
         if indexPath.row == self.currentOverlayIndex {
             print(indexPath.row)
             cell.alpha = 0.5
@@ -89,23 +91,33 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        // set size for collectionviewcell to 1/4th of page with 10 line spacing
         let imageWidth = (self.view.frame.size.width - 40)/4
         return CGSizeMake(imageWidth, imageWidth)
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        // set selected image view to the selected image in collectionview
         self.selectedImageView.image = self.images[indexPath.row]
         self.currentOverlayIndex = indexPath.row
         self.galleryCollectionVIew.reloadData()
     }
 
     @IBAction func onUploadButtonPressed(sender: UIBarButtonItem) {
+        // convert image to base64 string with 50% compression
         let image = self.selectedImageView.image
         let imageData: NSData = UIImageJPEGRepresentation(image!, 0.5)!
         let imageString = imageData.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
-        let ref = DataServices.dataService.BASE_REF
-        let picRef = ref.childByAppendingPath("pictures").childByAutoId()
+        
+        // add image to pictures
+        let ref = DataServices.dataService
+        let picRef = ref.BASE_REF.childByAppendingPath("pictures").childByAutoId()
         picRef.setValue(["image_data": imageString])
+        
+        // add image to belong to current_user
+        let currentUserID = NSUserDefaults.standardUserDefaults().valueForKey("uid") as? String
+        let userRef = ref.USER_REF.childByAppendingPath(currentUserID)
+        userRef.childByAppendingPath("pictures").updateChildValues([picRef.key:"true"])
         self.performSegueWithIdentifier("unwindToHomeSegue", sender: self)
     }
 }
