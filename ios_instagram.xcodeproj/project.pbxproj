@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		19294B6A1CCB4CA7007D6240 /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19294B691CCB4CA6007D6240 /* MyProfileViewController.swift */; };
 		19DEDBAF1CCA000B00F79E47 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DEDBAE1CCA000B00F79E47 /* User.swift */; };
 		7867DB3EC1FCBF50F54BDA23 /* Pods_ios_instagram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F62BE3F0933BC122C136A46E /* Pods_ios_instagram.framework */; };
 		B9ACF5781CCA11C600D6EB3B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ACF5771CCA11C600D6EB3B /* SignUpViewController.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		19294B691CCB4CA6007D6240 /* MyProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
 		19DEDBAE1CCA000B00F79E47 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		81866433A10A031594ED900A /* Pods-ios_instagram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios_instagram.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios_instagram/Pods-ios_instagram.debug.xcconfig"; sourceTree = "<group>"; };
 		B9ACF5771CCA11C600D6EB3B /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				B9ACF5771CCA11C600D6EB3B /* SignUpViewController.swift */,
+				19294B691CCB4CA6007D6240 /* MyProfileViewController.swift */,
 				B9C0A5491CC9E0FB00E30EF1 /* LoginViewController.swift */,
 				B9C0A56D1CC9FC6600E30EF1 /* GalleryViewController.swift */,
 				B9C0A5691CC9F43300E30EF1 /* HomeViewController.swift */,
@@ -280,6 +283,7 @@
 				B9C0A56A1CC9F43300E30EF1 /* HomeViewController.swift in Sources */,
 				B9C0A54A1CC9E0FB00E30EF1 /* LoginViewController.swift in Sources */,
 				B9ACF5781CCA11C600D6EB3B /* SignUpViewController.swift in Sources */,
+				19294B6A1CCB4CA7007D6240 /* MyProfileViewController.swift in Sources */,
 				B9C0A5481CC9E0FB00E30EF1 /* AppDelegate.swift in Sources */,
 				B9C0A56E1CC9FC6600E30EF1 /* GalleryViewController.swift in Sources */,
 				B9C0A55E1CC9E1FF00E30EF1 /* Constants.swift in Sources */,
