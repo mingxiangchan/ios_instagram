@@ -32,7 +32,7 @@ class SignUpViewController: UIViewController {
                 {
                     let uid = result ["uid"]as? String
  
-                    let userDict = ["email":email, "username":username]
+                    let userDict = ["email":email, "username":username] //add photos , followers
                     
                    
                     let currentUser = DataServices.dataService.BASE_REF.childByAppendingPath("users").childByAppendingPath(uid)
