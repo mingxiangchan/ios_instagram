@@ -21,6 +21,7 @@
 		B9C0A5641CC9ECA900E30EF1 /* UploadingImages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9C0A5631CC9ECA900E30EF1 /* UploadingImages.storyboard */; };
 		B9C0A56A1CC9F43300E30EF1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C0A5691CC9F43300E30EF1 /* HomeViewController.swift */; };
 		B9C0A56E1CC9FC6600E30EF1 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C0A56D1CC9FC6600E30EF1 /* GalleryViewController.swift */; };
+		B9D726381CCDE74E00DC8012 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9D726371CCDE74E00DC8012 /* Home.storyboard */; };
 		B9EEA5361CCDB09B004DC2C3 /* Picture.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EEA5351CCDB09B004DC2C3 /* Picture.swift */; };
 		B9EEA5381CCDBE6F004DC2C3 /* ImageResizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EEA5371CCDBE6F004DC2C3 /* ImageResizer.swift */; };
 		B9EEA53A1CCDC199004DC2C3 /* PictureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EEA5391CCDC199004DC2C3 /* PictureTableViewCell.swift */; };
@@ -43,6 +44,7 @@
 		B9C0A5631CC9ECA900E30EF1 /* UploadingImages.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UploadingImages.storyboard; sourceTree = "<group>"; };
 		B9C0A5691CC9F43300E30EF1 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B9C0A56D1CC9FC6600E30EF1 /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
+		B9D726371CCDE74E00DC8012 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = SOURCE_ROOT; };
 		B9EEA5351CCDB09B004DC2C3 /* Picture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Picture.swift; sourceTree = "<group>"; };
 		B9EEA5371CCDBE6F004DC2C3 /* ImageResizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageResizer.swift; sourceTree = "<group>"; };
 		B9EEA5391CCDC199004DC2C3 /* PictureTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureTableViewCell.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				B9C0A55B1CC9E12D00E30EF1 /* TabRouting.storyboard */,
+				B9D726371CCDE74E00DC8012 /* Home.storyboard */,
 				B9C0A5631CC9ECA900E30EF1 /* UploadingImages.storyboard */,
 				B9C0A54B1CC9E0FB00E30EF1 /* Main.storyboard */,
 				B9C0A5501CC9E0FB00E30EF1 /* LaunchScreen.storyboard */,
@@ -226,6 +229,7 @@
 				B9C0A5521CC9E0FB00E30EF1 /* LaunchScreen.storyboard in Resources */,
 				B9C0A54F1CC9E0FB00E30EF1 /* Assets.xcassets in Resources */,
 				B9C0A54D1CC9E0FB00E30EF1 /* Main.storyboard in Resources */,
+				B9D726381CCDE74E00DC8012 /* Home.storyboard in Resources */,
 				B9C0A5641CC9ECA900E30EF1 /* UploadingImages.storyboard in Resources */,
 				B9C0A55C1CC9E12D00E30EF1 /* TabRouting.storyboard in Resources */,
 			);
