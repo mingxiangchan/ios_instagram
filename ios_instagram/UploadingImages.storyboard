@@ -52,6 +52,68 @@
             </objects>
             <point key="canvasLocation" x="2418" y="643"/>
         </scene>
+        <!--Title-->
+        <scene sceneID="Ggg-gg-cSr">
+            <objects>
+                <viewController id="JaU-EP-r2R" customClass="ShareViewController" customModule="ios_instagram" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ves-ii-5ZH"/>
+                        <viewControllerLayoutGuide type="bottom" id="cwG-Hg-50w"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2Ot-LS-jSb">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9rv-l2-2Qz">
+                                <rect key="frame" x="40" y="104" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="Eg7-3R-4e8"/>
+                                    <constraint firstAttribute="width" constant="100" id="PQz-98-2mq"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Write a caption..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xhQ-OB-0E3">
+                                <rect key="frame" x="160" y="139" width="420" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b3a-GD-yWr">
+                                <rect key="frame" x="20" y="214" width="560" height="1"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="mPi-DK-Qeo"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="b3a-GD-yWr" firstAttribute="top" secondItem="9rv-l2-2Qz" secondAttribute="bottom" constant="10" id="3lh-hz-Rbp"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="b3a-GD-yWr" secondAttribute="trailing" id="Kc2-Nl-hbe"/>
+                            <constraint firstItem="b3a-GD-yWr" firstAttribute="leading" secondItem="2Ot-LS-jSb" secondAttribute="leadingMargin" id="b9g-Zv-lDv"/>
+                            <constraint firstItem="9rv-l2-2Qz" firstAttribute="leading" secondItem="2Ot-LS-jSb" secondAttribute="leadingMargin" constant="20" id="oGD-Li-Hxu"/>
+                            <constraint firstItem="xhQ-OB-0E3" firstAttribute="leading" secondItem="9rv-l2-2Qz" secondAttribute="trailing" constant="20" id="q7p-0O-R3W"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xhQ-OB-0E3" secondAttribute="trailing" id="qoV-YL-hCY"/>
+                            <constraint firstItem="9rv-l2-2Qz" firstAttribute="top" secondItem="Ves-ii-5ZH" secondAttribute="bottom" constant="40" id="xU8-wi-ghu"/>
+                            <constraint firstItem="xhQ-OB-0E3" firstAttribute="centerY" secondItem="9rv-l2-2Qz" secondAttribute="centerY" id="zDH-EK-1i2"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="MhE-UJ-UWV">
+                        <barButtonItem key="rightBarButtonItem" title="✓" id="Zmq-Vn-ywN">
+                            <connections>
+                                <action selector="onDoneButtonPressed:" destination="JaU-EP-r2R" id="7OK-OK-N1y"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="captionTextField" destination="xhQ-OB-0E3" id="EKz-gY-U1q"/>
+                        <outlet property="imageView" destination="9rv-l2-2Qz" id="haF-Oh-p97"/>
+                        <segue destination="8EC-er-olm" kind="unwind" identifier="unwindToHomeSegue" unwindAction="unwindToHome:" id="oNk-ev-47w"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PX5-yS-Nsg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="8EC-er-olm" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="3212" y="329"/>
+        </scene>
         <!--Gallery-->
         <scene sceneID="45z-Pa-b8W">
             <objects>
@@ -126,7 +188,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="→" id="XQA-xM-E95">
                             <connections>
-                                <action selector="onUploadButtonPressed:" destination="GIr-U2-oxd" id="7sX-95-PbU"/>
+                                <segue destination="JaU-EP-r2R" kind="show" identifier="toShareSegue" id="CWI-vw-DgD"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

@@ -29,7 +29,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let picture = self.pictures[section]
-        let username = picture.user!["email"] as! String
+        let username = picture.user!["username"] as! String
         return username
     }
     
