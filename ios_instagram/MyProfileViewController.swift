@@ -10,6 +10,7 @@ import UIKit
 
 class MyProfileViewController: UIViewController {
 
+    @IBOutlet weak var bioTextLabel: UITextView!
     @IBOutlet weak var userNameLabel: UILabel!
   
     override func viewDidLoad() {
@@ -21,6 +22,15 @@ class MyProfileViewController: UIViewController {
         navigationItem.title = "Profile"
         
         if let currentUserID = NSUserDefaults.standardUserDefaults().valueForKey("uid") as? String {
+            
+            DataServices.dataService.USER_REF.childByAppendingPath(currentUserID).childByAppendingPath("bio").observeSingleEventOfType(.Value, withBlock:
+                { snapshot -> Void in
+                    if let bio=snapshot.value as? String{
+                        self.bioTextLabel.text=bio
+                        
+                    }
+            })
+            
             DataServices.dataService.USER_REF.childByAppendingPath(currentUserID).childByAppendingPath("username").observeSingleEventOfType(.Value, withBlock:
                 { snapshot -> Void in
                     if let username=snapshot.value as? String{
@@ -30,6 +40,7 @@ class MyProfileViewController: UIViewController {
             })
             
         }
+        
         
 
     }
