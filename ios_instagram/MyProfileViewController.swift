@@ -10,19 +10,24 @@ import UIKit
 
 class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
+
     @IBOutlet weak var userNameLabel: UILabel!
-    @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var bioTextView: UITextView!
     @IBOutlet weak var collectionView: UICollectionView!
+    
     var pictures = [Picture]()
   
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Profile"
         self.collectionView.backgroundColor = UIColor.clearColor()
-        DataServices.dataService.CURRENT_USER_REF.childByAppendingPath("username").observeSingleEventOfType(.Value, withBlock:{ snapshot -> Void in
-            if let username=snapshot.value as? String{
+        DataServices.dataService.CURRENT_USER_REF.observeEventType(.Value, withBlock:{ snapshot -> Void in
+            if let username=snapshot.value["username"] as? String{
                 self.userNameLabel.text=username
+            }
+            if let bio = snapshot.value["bio"] as? String{
+                self.bioTextView.text = bio
+                print(self.bioTextView.text)
             }
         })
         self.loadImages()
