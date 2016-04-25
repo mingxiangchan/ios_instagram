@@ -28,6 +28,14 @@ class LoginViewController: UIViewController {
         }
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
+        
+        if ((NSUserDefaults.standardUserDefaults().valueForKey("uid") as? String) != nil){
+            self.performSegueWithIdentifier("redirectToTabRoutingSegue", sender: self)
+        }
+    }
+    
     
     
     
