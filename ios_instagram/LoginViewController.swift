@@ -28,8 +28,12 @@ class LoginViewController: UIViewController {
         }
     }
     
-    
-    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
+        if ((NSUserDefaults.standardUserDefaults().valueForKey("uid") as? String) != nil){
+            self.performSegueWithIdentifier("redirectToTabRoutingSegue", sender: self)
+        }
+    }
     
     @IBAction func onLoginButtonPressed(sender: UIButton) {
         if let email = emailTextField.text, password = passwordtextField.text{
