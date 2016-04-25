@@ -17,6 +17,9 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let CUID = NSUserDefaults.standardUserDefaults().valueForKey("uid") as? String{
+            //perform segue with identifier
+        }
 
     }
 
