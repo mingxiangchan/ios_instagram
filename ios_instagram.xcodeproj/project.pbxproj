@@ -68,6 +68,7 @@
 				19DEDBAE1CCA000B00F79E47 /* User.swift */,
 				B9EEA5351CCDB09B004DC2C3 /* Picture.swift */,
 				B9EEA5391CCDC199004DC2C3 /* PictureTableViewCell.swift */,
+				B9EEA5371CCDBE6F004DC2C3 /* ImageResizer.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -145,7 +146,6 @@
 				B9C0A5491CC9E0FB00E30EF1 /* LoginViewController.swift */,
 				B9C0A56D1CC9FC6600E30EF1 /* GalleryViewController.swift */,
 				B9C0A5691CC9F43300E30EF1 /* HomeViewController.swift */,
-				B9EEA5371CCDBE6F004DC2C3 /* ImageResizer.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";

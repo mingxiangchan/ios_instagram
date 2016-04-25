@@ -18,6 +18,7 @@ class Picture {
         self._pictureKey = key
         let imageString = dict["image_data"] as? String
         let image_data = NSData(base64EncodedString: imageString!, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters)
+        print(image_data?.length)
         let image = UIImage(data: image_data!)
         self.image = image
         self.user = ["username": "world"]

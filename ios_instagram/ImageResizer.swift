@@ -37,4 +37,17 @@ class ImageResizer {
         
         return newImage
     }
+    
+    func encodeToString(image: UIImage, maxFileSizeinKB: CGFloat) -> String {
+        var imageData: NSData = UIImageJPEGRepresentation(image, 0.99)!;
+        let maxFileSize: CGFloat = maxFileSizeinKB * 1024;
+        let imageFileSize: CGFloat = CGFloat(imageData.length)
+        
+        //If the image is bigger than the max file size, try to bring it down to the max file size
+        if (imageFileSize > maxFileSize) {
+            imageData = UIImageJPEGRepresentation(image, maxFileSize/imageFileSize)!;
+        }
+        let imageString = imageData.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
+        return imageString
+    }
 }
