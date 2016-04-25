@@ -52,10 +52,10 @@
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="iqV-RV-gCU" secondAttribute="trailing" id="FXA-WY-m5r"/>
-                                                <constraint firstItem="iqV-RV-gCU" firstAttribute="top" secondItem="MPd-o3-tPY" secondAttribute="topMargin" id="b6C-YU-Gei"/>
-                                                <constraint firstItem="iqV-RV-gCU" firstAttribute="leading" secondItem="MPd-o3-tPY" secondAttribute="leadingMargin" id="dUM-Kv-7RA"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="iqV-RV-gCU" secondAttribute="bottom" id="z0L-nD-GKP"/>
+                                                <constraint firstItem="iqV-RV-gCU" firstAttribute="trailing" secondItem="MPd-o3-tPY" secondAttribute="trailingMargin" id="2JK-La-Nkw"/>
+                                                <constraint firstItem="iqV-RV-gCU" firstAttribute="bottom" secondItem="MPd-o3-tPY" secondAttribute="bottomMargin" id="EvW-gy-dXb"/>
+                                                <constraint firstItem="iqV-RV-gCU" firstAttribute="leading" secondItem="MPd-o3-tPY" secondAttribute="leadingMargin" id="S0h-06-98l"/>
+                                                <constraint firstItem="iqV-RV-gCU" firstAttribute="top" secondItem="MPd-o3-tPY" secondAttribute="topMargin" id="adS-kx-Ynk"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

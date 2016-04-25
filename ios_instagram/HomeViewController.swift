@@ -14,7 +14,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.estimatedRowHeight = 100
+        self.tableView.estimatedRowHeight = 30
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.loadFeed()
     }
@@ -29,7 +29,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let picture = self.pictures[section]
-        let username = picture.user["username"]
+        let username = picture.user!["email"] as! String
         return username
     }
     
@@ -44,16 +44,28 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func unwindToHome(segue: UIStoryboardSegue) {}
     
     func loadFeed() -> Void{
-        let firebase = DataServices.dataService
-        let userPictures = firebase.CURRENT_USER_REF.childByAppendingPath("pictures")
+        // load own pictures
+        let uid = NSUserDefaults.standardUserDefaults().valueForKey("uid") as? String
+        self.loadPictures(uid!)
+        // load follower ppl pictures
+    }
+    
+    func loadPictures(uid: String){
+        let userRef = DataServices.dataService.USER_REF.childByAppendingPath(uid)
+        let userPictures = userRef.childByAppendingPath("pictures")
         userPictures.observeEventType(.ChildAdded, withBlock: { snapshot in
             if snapshot.value != nil {
-                let pictureRef = firebase.PICTURE_REF.childByAppendingPath(snapshot.key)
+                let pictureRef = DataServices.dataService.PICTURE_REF.childByAppendingPath(snapshot.key)
                 pictureRef.observeSingleEventOfType(.Value, withBlock: { pictureInfo in
                     let picture_dict = pictureInfo.value as! NSDictionary
-                    let picture = Picture.init(key: pictureInfo.key, dict: picture_dict)
-                    self.pictures.append(picture)
-                    self.tableView.reloadData()
+                    userRef.observeSingleEventOfType(.Value, withBlock: {userInfo in
+                        let userDict = userInfo.value as! NSDictionary
+                        
+                        let picture = Picture.init(key: pictureInfo.key, dict: picture_dict, userDict: userDict)
+                        self.pictures.append(picture)
+                        self.tableView.reloadData()
+                    })
+
                 })
             }
         })

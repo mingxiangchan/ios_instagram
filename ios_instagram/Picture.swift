@@ -11,16 +11,15 @@ import UIKit
 
 class Picture {
     var image: UIImage!
-    var user: [String:String]
+    var user: NSDictionary?
     private let _pictureKey: String!
     
-    init(key: String, dict: NSDictionary){
+    init(key: String, dict: NSDictionary, userDict: NSDictionary){
         self._pictureKey = key
         let imageString = dict["image_data"] as? String
         let image_data = NSData(base64EncodedString: imageString!, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters)
-        print(image_data?.length)
         let image = UIImage(data: image_data!)
         self.image = image
-        self.user = ["username": "world"]
+        self.user = userDict
     }
 }

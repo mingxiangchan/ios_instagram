@@ -14,6 +14,5 @@ class PictureTableViewCell: UITableViewCell {
     func setImageView(image: UIImage) -> Void{
         self.mainImageView.frame = CGRectMake(0, 0, image.size.width, image.size.height)
         self.mainImageView.image = image
-        self.frame = self.mainImageView.frame
     }
 }
