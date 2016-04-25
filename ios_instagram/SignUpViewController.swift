@@ -12,18 +12,7 @@ class SignUpViewController: UIViewController {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var paswordTextField: UITextField!
-    
     @IBOutlet weak var nameTextField: UITextField!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        if let CUID = NSUserDefaults.standardUserDefaults().valueForKey("uid") as? String{
-            //perform segue with identifier
-        }
-
-    }
-
-
 
     @IBAction func onSignUpButtonPressed(sender: UIButton) {
         
