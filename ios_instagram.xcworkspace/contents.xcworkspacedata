@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:MyProfile.storyboard">
+   </FileRef>
+   <FileRef
       location = "group:ios_instagram/SignUpViewController.swift">
    </FileRef>
    <FileRef
