@@ -25,7 +25,7 @@ class EditProfileViewController: UIViewController {
         let ref = DataServices.dataService.CURRENT_USER_REF
         let userDict = ["username": self.editUsernameTextLabel.text!,
                         "bio": self.editBioTextLabel.text!]
-        ref.setValue(userDict)
+        ref.updateChildValues(userDict)
         self.performSegueWithIdentifier("unwindToMyProfileSegue", sender: self)
     }
     
