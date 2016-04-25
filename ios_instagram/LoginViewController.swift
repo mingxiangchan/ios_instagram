@@ -28,7 +28,13 @@ class LoginViewController: UIViewController {
         }
     }
     
-    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
+        
+        if ((NSUserDefaults.standardUserDefaults().valueForKey("uid") as? String) != nil){
+            self.performSegueWithIdentifier("redirectToTabRoutingSegue", sender: self)
+        }
+    }
     
     
     @IBAction func onLoginButtonPressed(sender: UIButton) {
@@ -52,10 +58,3 @@ class LoginViewController: UIViewController {
         
     }
 }
-
-//let currentUserId = NSUserDefaults.standardUserDefaults().valueForKey("uid") as? String
-//if currentUserId != nil {
-//    if DataService.dataservice.USER_REF.childByAppendingPath(currentUserId)!.authData != nil{
-//        self.performSegueWithIdentifier("LoggedIn", sender: nil)
-//    }
-//}
