@@ -22,7 +22,7 @@ class LoginViewController: UIViewController {
         let currentUserID = NSUserDefaults.standardUserDefaults().valueForKey("uid") as? String
         if currentUserID != nil{
             if DataServices.dataService.USER_REF.childByAppendingPath(currentUserID)!.authData != nil{
-                notificationLabel.text = "You're Signed up // DO SEGUE"
+                notificationLabel.text = "You're Signed up // DO"
                 self.performSegueWithIdentifier("redirectToTabRoutingSegue", sender: self)
             }
         }
