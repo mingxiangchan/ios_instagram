@@ -17,88 +17,39 @@ class EditProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Edit Profile"
-        //  navigationItem.backBarButtonItem?.action=
-
-    
-    
+        self.loadTitle("EDIT PROFILE")
+        self.loadPersonalInfo()
     }
-//    override func viewWillDisappear(animated: Bool) {
-//    super.viewWillDisappear(true)
-//        print("Iam in view dissapear")
-//        if self.navigationController!.viewControllers.indexOf(self)==NSNotFound{
-//            
-//            
-//            if let newBio = editBioTextLabel.text{
-//                            if let currentUID=NSUserDefaults.standardUserDefaults().valueForKey("uid") as? String {
-//                
-//                                DataServices.dataService.USER_REF.childByAppendingPath(currentUID).childByAppendingPath("bio").setValue(newBio)
-//                            print("Iam in bio")}
-//                        }
-//                        if let newUsername = editUsernameTextLabel.text{
-//                            let uuname = ["username": newUsername]
-//                            if let currentID=NSUserDefaults.standardUserDefaults().valueForKey("uid") as? String {
-//                                DataServices.dataService.USER_REF.childByAppendingPath(currentID).updateChildValues(uuname)
-//                           print("I am in username") }
-//                        
-//                    }
-//
-//            
-//        }
-//    }
-
-// if let update chile values "username": newusername
     
-//    var hopperRef = usersRef.childByAppendingPath("gracehop")
-//    var nickname = ["nickname": "Amazing Grace"]
-//    
-//    hopperRef.updateChildValues(nickname)
+    @IBAction func onDoneButtonPressed(sender: AnyObject) {
+        let ref = DataServices.dataService.CURRENT_USER_REF
+        let userDict = ["username": self.editUsernameTextLabel.text!,
+                        "bio": self.editBioTextLabel.text!]
+        ref.setValue(userDict)
+        self.performSegueWithIdentifier("unwindToMyProfileSegue", sender: self)
+    }
     
-//    -(void) viewWillDisappear:(BOOL)animated {
-//    if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
-//    // Navigation button was pressed. Do some stuff
-//    [self.navigationController popViewControllerAnimated:NO];
-//    }
-//    [super viewWillDisappear:animated];
-//    }
+    func loadPersonalInfo() -> Void{
+        DataServices.dataService.CURRENT_USER_REF.observeEventType(.Value, withBlock:{ snapshot -> Void in
+            if let username=snapshot.value["username"] as? String{
+                self.editUsernameTextLabel.text=username
+            }
+            if let bio = snapshot.value["bio"] as? String{
+                self.editBioTextLabel.text = bio
+            }
+        })
+    }
     
     
-    
-//    func performEdit(sender) -> Void {
-//        <#function body#>
-//    }
-//    override func unwindForSegue(unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
-//        
-//        if let newBio = editBioTextLabel.text{
-//            if let currentUID=NSUserDefaults.standardUserDefaults().valueForKey("uid") as? String {
-//                
-//                DataServices.dataService.USER_REF.childByAppendingPath(currentUID).childByAppendingPath("bio").setValue(newBio)
-//            }
-//        }
-//        if let newUsername = editUsernameTextLabel.text{
-//            if let currentID=NSUserDefaults.standardUserDefaults().valueForKey("uid") as? String {
-//                DataServices.dataService.USER_REF.childByAppendingPath(currentID).childByAppendingPath("username").setValue(newUsername)
-//            }
-//        
-//    }
-//}
-    
-    @IBAction func onDonneButtonPressed(sender: UIButton) {
-        if let newBio = editBioTextLabel.text{
-            if let currentUID=NSUserDefaults.standardUserDefaults().valueForKey("uid") as? String {
-                
-                DataServices.dataService.USER_REF.childByAppendingPath(currentUID).childByAppendingPath("bio").setValue(newBio)
-                print("Iam in bio")}
-        }
-        if let newUsername = editUsernameTextLabel.text{
-            let uuname = ["username": newUsername]
-            if let currentID=NSUserDefaults.standardUserDefaults().valueForKey("uid") as? String {
-                DataServices.dataService.USER_REF.childByAppendingPath(currentID).updateChildValues(uuname)
-                print("I am in username") }
-            
-        }
-        
-        
+    func loadTitle(string: String)->Void{
+        let lbNavTitle = UILabel()
+        lbNavTitle.frame = CGRectMake(0,40,320,40)
+        lbNavTitle.textAlignment = NSTextAlignment.Left
+        lbNavTitle.text = string
+        self.navigationItem.titleView = lbNavTitle;
+        let backButton = UIBarButtonItem()
+        backButton.title = ""
+        self.navigationController!.navigationBar.topItem!.backBarButtonItem = backButton
     }
 }
 

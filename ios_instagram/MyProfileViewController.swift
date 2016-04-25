@@ -19,17 +19,8 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
   
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Profile"
         self.collectionView.backgroundColor = UIColor.clearColor()
-        DataServices.dataService.CURRENT_USER_REF.observeEventType(.Value, withBlock:{ snapshot -> Void in
-            if let username=snapshot.value["username"] as? String{
-                self.userNameLabel.text=username
-            }
-            if let bio = snapshot.value["bio"] as? String{
-                self.bioTextView.text = bio
-                print(self.bioTextView.text)
-            }
-        })
+        self.loadPersonalInfo()
         self.loadImages()
     }
     
@@ -54,6 +45,18 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
         return CGSizeMake(imageWidth, imageWidth)
     }
     
+    func loadPersonalInfo() -> Void{
+        DataServices.dataService.CURRENT_USER_REF.observeEventType(.Value, withBlock:{ snapshot -> Void in
+            if let username=snapshot.value["username"] as? String{
+                self.userNameLabel.text=username
+                self.loadTitle(username.uppercaseString)
+            }
+            if let bio = snapshot.value["bio"] as? String{
+                self.bioTextView.text = bio
+            }
+        })
+    }
+    
     func loadImages()-> Void{
         let ref = DataServices.dataService.CURRENT_USER_REF.childByAppendingPath("pictures")
         ref.observeEventType(.ChildAdded, withBlock: { pictureIndex in
@@ -67,5 +70,15 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
         })
     
     }
+    
+    func loadTitle(string: String)->Void{
+        let lbNavTitle = UILabel()
+        lbNavTitle.frame = CGRectMake(0,40,320,40)
+        lbNavTitle.textAlignment = NSTextAlignment.Left
+        lbNavTitle.text = string
+        self.navigationItem.titleView = lbNavTitle;
+    }
+    
+    @IBAction func unwindToMyProfile(segue: UIStoryboardSegue) {}
 
 }
