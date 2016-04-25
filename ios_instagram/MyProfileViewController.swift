@@ -19,19 +19,12 @@ class MyProfileViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         navigationItem.title = "Profile"
-        
-        if let currentUserID = NSUserDefaults.standardUserDefaults().valueForKey("uid") as? String {
-            DataServices.dataService.USER_REF.childByAppendingPath(currentUserID).childByAppendingPath("username").observeSingleEventOfType(.Value, withBlock:
-                { snapshot -> Void in
-                    if let username=snapshot.value as? String{
-                        self.userNameLabel.text=username
-                        
-                    }
-            })
-            
-        }
-        
-
+        DataServices.dataService.CURRENT_USER_REF.childByAppendingPath("username").observeSingleEventOfType(.Value, withBlock:{ snapshot -> Void in
+                if let username=snapshot.value as? String{
+                    self.userNameLabel.text=username
+                    
+                }
+        })
     }
 
 }
