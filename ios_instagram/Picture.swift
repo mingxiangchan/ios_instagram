@@ -19,6 +19,7 @@ class Picture {
         let imageString = dict["image_data"] as? String
         let image_data = NSData(base64EncodedString: imageString!, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters)
         let image = UIImage(data: image_data!)
+        
         self.image = image
         self.user = userDict
     }

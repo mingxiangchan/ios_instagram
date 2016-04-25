@@ -13,6 +13,8 @@ class PictureTableViewCell: UITableViewCell {
     
     func setImageView(image: UIImage) -> Void{
         self.mainImageView.frame = CGRectMake(0, 0, image.size.width, image.size.height)
+        self.mainImageView.contentMode = UIViewContentMode.ScaleAspectFit
         self.mainImageView.image = image
+        self.mainImageView.autoresizesSubviews = false
     }
 }
