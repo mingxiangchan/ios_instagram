@@ -106,8 +106,7 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
     @IBAction func onUploadButtonPressed(sender: UIBarButtonItem) {
         // convert image to base64 string with 50% compression
         let image = self.selectedImageView.image
-        let imageData: NSData = UIImageJPEGRepresentation(image!, 0.5)!
-        let imageString = imageData.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
+        let imageString = ImageResizer().encodeToString(image!, maxFileSizeinKB: 500)
         
         // add image to pictures
         let ref = DataServices.dataService

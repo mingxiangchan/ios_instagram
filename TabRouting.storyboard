@@ -15,32 +15,13 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="VDq-iU-VMn" kind="relationship" relationship="viewControllers" id="UWZ-yJ-qOe"/>
+                        <segue destination="hNz-uS-wY4" kind="relationship" relationship="viewControllers" id="UWZ-yJ-qOe"/>
                         <segue destination="NsX-Yu-N87" kind="relationship" relationship="viewControllers" id="xdu-hC-gA7"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6kc-TW-qrH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-710" y="-17"/>
-        </scene>
-        <!--Home-->
-        <scene sceneID="fge-87-aoG">
-            <objects>
-                <viewController id="VDq-iU-VMn" customClass="HomeViewController" customModule="ios_instagram" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="vW3-iN-XVp"/>
-                        <viewControllerLayoutGuide type="bottom" id="gDU-EH-hyB"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="tit-eJ-Sbq">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Home" id="Rze-OT-a82"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hhI-tw-CUr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="84" y="-310"/>
         </scene>
         <!--UploadingImages-->
         <scene sceneID="jnt-U9-rT8">
@@ -50,7 +31,17 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="11y-YL-sf5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="110" y="313"/>
+            <point key="canvasLocation" x="-14" y="-17"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="0EH-TI-vbF">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Home" id="hNz-uS-wY4" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="wp1-7H-Adl"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NDP-eM-SoG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-14" y="-564"/>
         </scene>
     </scenes>
 </document>
