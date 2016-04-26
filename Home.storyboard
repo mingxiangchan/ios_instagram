@@ -220,6 +220,9 @@
                                                 <exclude reference="ivm-8s-B9s"/>
                                             </mask>
                                         </variation>
+                                        <connections>
+                                            <action selector="onPostButtonPressed:" destination="kF9-8n-mOM" eventType="touchUpInside" id="dv6-UC-n4Q"/>
+                                        </connections>
                                     </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Add a comment..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vkb-cB-r6e">
                                         <rect key="frame" x="20" y="0.0" width="530" height="50"/>
@@ -270,6 +273,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="DTi-rG-cpA"/>
                     <connections>
+                        <outlet property="newCommentTextField" destination="vkb-cB-r6e" id="UMu-bW-ES9"/>
                         <outlet property="tableView" destination="Ase-f5-6s9" id="ntk-LK-lhw"/>
                     </connections>
                 </viewController>

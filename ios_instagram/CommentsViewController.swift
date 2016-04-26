@@ -9,6 +9,7 @@
 import UIKit
 
 class CommentsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    @IBOutlet weak var newCommentTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     var picture: Picture!
     var comments = [Comment]()
@@ -97,5 +98,29 @@ class CommentsViewController: UIViewController, UITableViewDelegate, UITableView
             tableView.contentInset = contentInset
             }, completion: {(finished: Bool) -> Void in
         })
+    }
+    
+    @IBAction func onPostButtonPressed(sender: AnyObject) {
+        let input = self.newCommentTextField.text!
+        let userUid = NSUserDefaults.standardUserDefaults().valueForKey("uid") as! String
+        let pictureUid = self.picture.pictureKey
+        let ref = DataServices.dataService
+        
+        // upload comment
+        let commentRef = ref.COMMENT_REF.childByAutoId()
+        let commentDict = ["body": input,
+                           "user_uid": userUid,
+                           "picture_uid": pictureUid]
+        commentRef.setValue(commentDict)
+        
+        // add comment under user
+        let userCommentRef = ref.CURRENT_USER_REF.childByAppendingPath("comments")
+        userCommentRef.updateChildValues([commentRef.key: "true"])
+        
+        // add comment under picture
+        let pictureCommentRef = ref.PICTURE_REF.childByAppendingPath(pictureUid).childByAppendingPath("comments")
+        pictureCommentRef.updateChildValues([commentRef.key: "true"])
+
+        self.newCommentTextField.text = ""
     }
 }
