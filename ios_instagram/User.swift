@@ -11,6 +11,7 @@ class User{
     private let _userkey: String!
     var username: String!
     var email :String!
+    var bio :String!
     var userkey:String!{
         return _userkey
     }
@@ -23,6 +24,9 @@ class User{
         if let email = dict["email"] as? String
         {
             self.email=email
+        }
+        if let bio = dict ["bio"] as? String{
+            self.bio=bio
         }
     }
     
