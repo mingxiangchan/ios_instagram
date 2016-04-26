@@ -9,10 +9,12 @@
 import UIKit
 
 class CommentsViewController: UIViewController {
+    var picture: Picture?
+    var comments = [Comment]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.loadTitle("COMMENTS")
         // Do any additional setup after loading the view.
     }
 
@@ -20,16 +22,15 @@ class CommentsViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func loadTitle(string: String)->Void{
+        let lbNavTitle = UILabel()
+        lbNavTitle.frame = CGRectMake(0,40,320,40)
+        lbNavTitle.textAlignment = NSTextAlignment.Left
+        lbNavTitle.text = string
+        self.navigationItem.titleView = lbNavTitle;
+        let backButton = UIBarButtonItem()
+        backButton.title = ""
+        self.navigationController!.navigationBar.topItem!.backBarButtonItem = backButton
     }
-    */
-
 }
