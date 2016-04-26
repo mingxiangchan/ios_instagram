@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,  UISearchBarDelegate {
     @IBOutlet weak var tableView: UITableView!
     var pictures = [Picture]()
     
@@ -38,6 +38,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let picture = self.pictures[indexPath.section]
         let resizedImage = ImageResizer().resize(picture.image, targetWidth: cell.bounds.width)
         cell.setImageView(resizedImage)
+        if picture.caption != nil {
+            cell.setCaption(picture.caption!)
+        }
+        print("Picture Frame \(cell.mainImageView.frame)")
+        print("Caption Frame \(cell.captionLabel.frame)")
+        print("Cell Frame \(cell.frame)")
         return cell
     }
     
@@ -70,4 +76,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         })
     }
+    
+    func searchBar(searchBar: UISearchBar, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        print("test")
+        self.tableView.reloadData()
+        return true
+    }
+    
 }
