@@ -52,12 +52,15 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
       if segue.identifier == "toDetailViewController" {
             if let destination = segue.destinationViewController as? SearchDetailViewController {
-                
-                
+               
                 if let iindex = tableView.indexPathForSelectedRow?.row {
-                    destination.userProfile = usersArray[iindex]
-              }
-          }
+                    if (searchController.active == true && searchController.searchBar.text != "") {
+                    
+                    destination.userProfile = filteredUsers[iindex]
+                    
+                    }else{ destination.userProfile = usersArray[iindex] }
+                }
+            }
         }
     }
     
