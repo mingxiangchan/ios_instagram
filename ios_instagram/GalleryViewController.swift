@@ -103,20 +103,10 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
         self.galleryCollectionVIew.reloadData()
     }
 
-    @IBAction func onUploadButtonPressed(sender: UIBarButtonItem) {
-        // convert image to base64 string with 50% compression
-        let image = self.selectedImageView.image
-        let imageString = ImageResizer().encodeToString(image!, maxFileSizeinKB: 500)
-        
-        // add image to pictures
-        let ref = DataServices.dataService
-        let picRef = ref.BASE_REF.childByAppendingPath("pictures").childByAutoId()
-        picRef.setValue(["image_data": imageString])
-        
-        // add image to belong to current_user
-        let currentUserID = NSUserDefaults.standardUserDefaults().valueForKey("uid") as? String
-        let userRef = ref.USER_REF.childByAppendingPath(currentUserID)
-        userRef.childByAppendingPath("pictures").updateChildValues([picRef.key:"true"])
-        self.performSegueWithIdentifier("unwindToHomeSegue", sender: self)
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "toShareSegue" {
+            let destination = segue.destinationViewController as! ShareViewController
+            destination.image = self.selectedImageView.image
+        }
     }
 }

@@ -12,6 +12,7 @@ import UIKit
 class Picture {
     var image: UIImage!
     var user: NSDictionary?
+    var caption: String?
     private let _pictureKey: String!
     
     init(key: String, dict: NSDictionary, userDict: NSDictionary?=nil){
@@ -21,6 +22,10 @@ class Picture {
         
         self.image = image
         self.user = userDict
+        
+        if let imageCaption = dict["caption"] as? String{
+            self.caption = imageCaption
+        }
     }
     
     func decodeImage(imageString: String) -> UIImage {

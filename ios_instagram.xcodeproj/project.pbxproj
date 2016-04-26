@@ -11,6 +11,7 @@
 		19DEDBAF1CCA000B00F79E47 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DEDBAE1CCA000B00F79E47 /* User.swift */; };
 		19F3E72C1CCCC78A00601A4C /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F3E72B1CCCC78A00601A4C /* EditProfileViewController.swift */; };
 		7867DB3EC1FCBF50F54BDA23 /* Pods_ios_instagram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F62BE3F0933BC122C136A46E /* Pods_ios_instagram.framework */; };
+		B927302F1CCE26FE00C50CC8 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927302E1CCE26FE00C50CC8 /* ShareViewController.swift */; };
 		B9794C031CCDED79009CBD2A /* MyProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9794C021CCDED79009CBD2A /* MyProfile.storyboard */; };
 		B9A0A1B31CCDF31000C2F20A /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9A0A1B21CCDF31000C2F20A /* Search.storyboard */; };
 		B9A0A1B51CCDF31E00C2F20A /* Activity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9A0A1B41CCDF31E00C2F20A /* Activity.storyboard */; };
@@ -37,6 +38,7 @@
 		19DEDBAE1CCA000B00F79E47 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		19F3E72B1CCCC78A00601A4C /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		81866433A10A031594ED900A /* Pods-ios_instagram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios_instagram.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios_instagram/Pods-ios_instagram.debug.xcconfig"; sourceTree = "<group>"; };
+		B927302E1CCE26FE00C50CC8 /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		B9794C021CCDED79009CBD2A /* MyProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MyProfile.storyboard; sourceTree = "<group>"; };
 		B9A0A1B21CCDF31000C2F20A /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = SOURCE_ROOT; };
 		B9A0A1B41CCDF31E00C2F20A /* Activity.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Activity.storyboard; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				B9C0A5491CC9E0FB00E30EF1 /* LoginViewController.swift */,
 				B9C0A56D1CC9FC6600E30EF1 /* GalleryViewController.swift */,
 				B9C0A5691CC9F43300E30EF1 /* HomeViewController.swift */,
+				B927302E1CCE26FE00C50CC8 /* ShareViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B927302F1CCE26FE00C50CC8 /* ShareViewController.swift in Sources */,
 				B9C0A56A1CC9F43300E30EF1 /* HomeViewController.swift in Sources */,
 				B9C0A54A1CC9E0FB00E30EF1 /* LoginViewController.swift in Sources */,
 				B9EEA5381CCDBE6F004DC2C3 /* ImageResizer.swift in Sources */,
