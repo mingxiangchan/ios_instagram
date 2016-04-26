@@ -8,28 +8,37 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
-
+class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDelegate{
+    
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    @IBOutlet weak var tableView: UITableView!
+var usersArray = [User]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        DataServices.dataService.USER_REF.observeEventType(.ChildAdded, withBlock: { (snapshot)-> Void in
+            if let value = snapshot.value as? [String : AnyObject]{
+                let user = User(key:snapshot.key, dict:value)
+                self.usersArray.append(user)
+                self.tableView.reloadData()
+            }
+            })
+        
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return usersArray.count
+    }
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell")
+        let uuser = usersArray[indexPath.row]
+        cell?.textLabel?.text = uuser.email
+        cell?.detailTextLabel?.text = uuser.username
+        return cell!
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

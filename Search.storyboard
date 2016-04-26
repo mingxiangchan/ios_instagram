@@ -8,7 +8,7 @@
         <!--Search-->
         <scene sceneID="bnl-Ie-0uI">
             <objects>
-                <viewController id="7Ym-BR-Fuz" sceneMemberID="viewController">
+                <viewController id="7Ym-BR-Fuz" customClass="SearchViewController" customModule="ios_instagram" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZQr-Vn-kcb"/>
                         <viewControllerLayoutGuide type="bottom" id="eVs-r5-UPv"/>
@@ -16,10 +16,47 @@
                     <view key="view" contentMode="scaleToFill" id="KVQ-Wi-ZtM">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mLT-eF-Dbc">
+                                <rect key="frame" x="20" y="145" width="560" height="398"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="HIB-9v-XSQ">
+                                        <rect key="frame" x="0.0" y="28" width="560" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HIB-9v-XSQ" id="Tsr-qJ-Ghw">
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="7Ym-BR-Fuz" id="qMY-hA-Sxb"/>
+                                    <outlet property="delegate" destination="7Ym-BR-Fuz" id="PqY-yM-S9F"/>
+                                </connections>
+                            </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Lpm-gL-Hlq">
+                                <rect key="frame" x="20" y="28" width="560" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="560" id="ZGu-hr-9Ev"/>
+                                    <constraint firstAttribute="height" constant="44" id="cG8-hk-1lM"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Lpm-gL-Hlq" secondAttribute="trailing" constant="20" id="54V-6v-ro5"/>
+                            <constraint firstItem="Lpm-gL-Hlq" firstAttribute="leading" secondItem="KVQ-Wi-ZtM" secondAttribute="leading" constant="20" id="cbR-vv-fhR"/>
+                            <constraint firstItem="Lpm-gL-Hlq" firstAttribute="top" secondItem="ZQr-Vn-kcb" secondAttribute="bottom" constant="8" id="zbL-8J-PEg"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Search" id="ZhU-2q-UG8"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="searchBar" destination="Lpm-gL-Hlq" id="dLq-SZ-HAT"/>
+                        <outlet property="tableView" destination="mLT-eF-Dbc" id="Wqa-RS-DrR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rXw-Rf-LzI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
