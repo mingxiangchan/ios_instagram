@@ -20,16 +20,22 @@ class User{
         self._userkey=key
         if let username = dict ["username"] as? String{
             self.username = username
+        }else{
+            self.username = "UserNamefound"
         }
-        if let email = dict["email"] as? String
-        {
+        
+            if let email = dict["email"] as? String{
             self.email=email
+        }else{
+            self.email = "email@notfound.com"
         }
         if let bio = dict ["bio"] as? String{
             self.bio=bio
-        }
+        }else{
+            self.bio = "BioNotfound"
     }
     
+}
 }
 
 
