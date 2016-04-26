@@ -41,7 +41,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         if picture.caption == nil || picture.caption == "" {
             cell.hideCaption()
         } else {
-            cell.setCaption(picture.caption!)
+            cell.setCaption(picture.formattedDescription())
         }
         cell.delegate = self
         return cell

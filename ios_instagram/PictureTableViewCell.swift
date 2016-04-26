@@ -24,9 +24,9 @@ class PictureTableViewCell: UITableViewCell {
         self.delegate?.onCommentsButtonPressed(self)
     }
     
-    func setCaption(caption: String)-> Void{
+    func setCaption(caption: NSAttributedString)-> Void{
         self.captionLabel.hidden = false
-        self.captionLabel.text = caption
+        self.captionLabel.attributedText = caption
     }
     
     func hideCaption(){
