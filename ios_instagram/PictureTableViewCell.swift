@@ -9,10 +9,36 @@
 import UIKit
 
 class PictureTableViewCell: UITableViewCell {
+    @IBOutlet weak var likesLabel: UILabel!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var mainImageView: UIImageView!
     @IBOutlet weak var captionLabel: UILabel!
     weak var delegate:PictureTableViewCellDelegate?
+    
+    func initializeContents(picture: Picture){
+        // set image
+        let resizedImage = ImageResizer().resize(picture.image, targetWidth: self.bounds.width)
+        self.setImageView(resizedImage)
+        
+        // set caption
+        if picture.caption == nil || picture.caption == "" {
+            self.hideCaption()
+        } else {
+            self.setCaption(picture.formattedDescription())
+        }
+        
+        // set likes lable
+        self.setLabelLikes(picture.numLikes)
+        
+        // set like button
+        picture.checkIfCurrentUserLiked({checkResult in
+            if checkResult{
+                self.likeButton.setImage(UIImage(named: "heart_red"), forState: UIControlState.Normal)
+            } else {
+                self.likeButton.setImage(UIImage(named: "heart"), forState: UIControlState.Normal)
+            }
+        })
+    }
     
     func setImageView(image: UIImage) -> Void{
         self.mainImageView.frame = CGRectMake(0, 0, image.size.width, image.size.height)
@@ -34,6 +60,10 @@ class PictureTableViewCell: UITableViewCell {
         // not working
         self.captionLabel.hidden = true
         self.captionLabel.heightAnchor.constraintEqualToConstant(0)
+    }
+    
+    func setLabelLikes(numLikes: Int){
+        self.likesLabel.text = "\(numLikes) likes"
     }
     
     @IBAction func onLikeButtonPressed(sender: UIButton) {

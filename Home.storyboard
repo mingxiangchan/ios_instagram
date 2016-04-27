@@ -132,6 +132,7 @@
                                         <connections>
                                             <outlet property="captionLabel" destination="f2E-14-8aB" id="WRF-bF-eQb"/>
                                             <outlet property="likeButton" destination="DHx-zu-Gz8" id="hkc-Ui-bnD"/>
+                                            <outlet property="likesLabel" destination="Xp8-FC-eXr" id="aSh-Aw-hjL"/>
                                             <outlet property="mainImageView" destination="852-mH-xiT" id="q9V-zY-GAv"/>
                                         </connections>
                                     </tableViewCell>

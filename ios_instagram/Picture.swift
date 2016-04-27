@@ -13,6 +13,7 @@ class Picture {
     var image: UIImage!
     var user: NSDictionary?
     var caption: String?
+    var numLikes: Int!
     private let _pictureKey: String!
     
     init(key: String, dict: NSDictionary, userDict: NSDictionary?=nil){
@@ -22,6 +23,12 @@ class Picture {
         
         self.image = image
         self.user = userDict
+        let numLikes = dict["users_who_liked"]?.count!
+        if numLikes == nil {
+            self.numLikes = 0
+        } else {
+            self.numLikes = numLikes
+        }
         
         if let imageCaption = dict["caption"] as? String{
             self.caption = imageCaption
@@ -64,7 +71,7 @@ class Picture {
         return attributedBody
     }
     
-    func checkIfCurrentUserLiked() -> Void {
+    func checkIfCurrentUserLiked(completionHandler: (checkResult: Bool)->Void) -> Void {
         let ref = DataServices.dataService
         let userUid = NSUserDefaults.standardUserDefaults().valueForKey("uid") as! String
         let pictureUid = self.pictureKey
@@ -72,12 +79,8 @@ class Picture {
         let targetRef = ref.pictureLikesRef(pictureUid).childByAppendingPath(userUid)
         
         targetRef.observeSingleEventOfType(.Value, withBlock: {snapshot in
-            print(snapshot)
-            if snapshot.value.isEqual(NSNull()){
-                self.addLike()
-            } else {
-                self.removeLike()
-            }
+            let result = snapshot.value.isEqual(NSNull())
+            completionHandler(checkResult: !result)
         })
     }
     
