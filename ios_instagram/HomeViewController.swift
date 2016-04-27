@@ -17,7 +17,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.tableView.estimatedRowHeight = 30
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.loadFeed()
-        self.loadFeedChanges()
     }
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -64,6 +63,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                         
                         let picture = Picture.init(key: pictureInfo.key, dict: picture_dict, userDict: userDict)
                         self.pictures.append(picture)
+                        self.addPictureChangesListener(picture)
                         self.tableView.reloadData()
                     })
                 })
@@ -71,10 +71,14 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         })
     }
     
-    func loadFeedChanges(){
-        
+    func addPictureChangesListener(picture: Picture){
+        let ref = DataServices.dataService.PICTURE_REF.childByAppendingPath(picture.pictureKey)
+        ref.observeEventType(.Value, withBlock: {snapshot in
+            let pictureDict = snapshot.value as! NSDictionary
+            picture.updateFromDict(pictureDict)
+            self.tableView.reloadData()
+        })
     }
-
     
     func onCommentsButtonPressed(sender: PictureTableViewCell) {
         let sectionIndex = self.tableView.indexPathForCell(sender)!.section

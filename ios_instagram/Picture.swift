@@ -18,11 +18,15 @@ class Picture {
     
     init(key: String, dict: NSDictionary, userDict: NSDictionary?=nil){
         self._pictureKey = key
+        self.user = userDict
+        self.updateFromDict(dict)
+    }
+    
+    func updateFromDict(dict: NSDictionary){
         let imageString = dict["image_data"] as? String
         let image = self.decodeImage(imageString!)
         
         self.image = image
-        self.user = userDict
         let numLikes = dict["users_who_liked"]?.count!
         if numLikes == nil {
             self.numLikes = 0
