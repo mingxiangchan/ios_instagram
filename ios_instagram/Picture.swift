@@ -65,12 +65,28 @@ class Picture {
     }
     
     func addLike(){
-        // add like under likes table
         let ref = DataServices.dataService
+        
+        // get required uids
         let likeRef = ref.LIKE_REF.childByAutoId()
         let likeUid = likeRef.key
+        let userUid = NSUserDefaults.standardUserDefaults().valueForKey("uid") as! String
+        let pictureUid = self.pictureKey
+        
+        // add like under likes table
+        let likeDict = ["picture_uid": pictureUid, "user_uid": userUid]
+        likeRef.setValue(likeDict)
         
         // add like uid under pictures table
+        let pictureLikesRef = ref.PICTURE_REF.childByAppendingPath(pictureUid).childByAppendingPath("likes")
+        pictureLikesRef.updateChildValues([likeUid: "true"])
+        
         // add like uid under users table
+        let userLikesRef = ref.CURRENT_USER_REF.childByAppendingPath("likes")
+        userLikesRef.updateChildValues([likeUid: "true"])
+        
+        likeRef.observeSingleEventOfType(.Value, withBlock: {snapshot in print(snapshot)})
+        pictureLikesRef.observeSingleEventOfType(.Value, withBlock: {snapshot in print(snapshot)})
+        userLikesRef.observeSingleEventOfType(.Value, withBlock: {snapshot in print(snapshot)})
     }
 }

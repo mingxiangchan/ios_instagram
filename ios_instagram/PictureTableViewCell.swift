@@ -42,13 +42,15 @@ class PictureTableViewCell: UITableViewCell {
     }
     
     func toggleLikeButton(){
-        let currentButtonImage = self.likeButton.imageView!.image
+        
+        let currentButtonImage = self.likeButton.imageView!.image!
         let unTappedButtonImage = UIImage(named: "heart")
         let TappedButtonImage = UIImage(named: "heart_red")
-        if currentButtonImage == unTappedButtonImage{
-            self.likeButton.imageView!.image = TappedButtonImage
-        } else if currentButtonImage == TappedButtonImage{
-            self.likeButton.imageView!.image = unTappedButtonImage
+        
+        if currentButtonImage.isEqual(unTappedButtonImage) {
+            self.likeButton.setImage(TappedButtonImage, forState: UIControlState.Normal)
+        } else if currentButtonImage.isEqual(TappedButtonImage){
+            self.likeButton.setImage(TappedButtonImage, forState: UIControlState.Normal)
         }
     }
 }
