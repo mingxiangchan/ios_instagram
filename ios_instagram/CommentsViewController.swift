@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class CommentsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var newCommentTextField: UITextField!
@@ -115,6 +116,7 @@ class CommentsViewController: UIViewController, UITableViewDelegate, UITableView
                            "user_uid": userUid,
                            "picture_uid": pictureUid]
         commentRef.setValue(commentDict)
+        commentRef.childByAppendingPath("created_at").setValue(FirebaseServerValue.timestamp())
         
         // add comment under user
         let userCommentRef = ref.CURRENT_USER_REF.childByAppendingPath("comments")

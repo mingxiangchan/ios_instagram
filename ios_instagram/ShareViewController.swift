@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ShareViewController: UIViewController {
     var image: UIImage?
@@ -30,6 +31,7 @@ class ShareViewController: UIViewController {
         let ref = DataServices.dataService
         let picRef = ref.BASE_REF.childByAppendingPath("pictures").childByAutoId()
         picRef.setValue(pictDict)
+        picRef.childByAppendingPath("created_at").setValue(FirebaseServerValue.timestamp())
         
         // add image to belong to current_user
         let currentUserID = NSUserDefaults.standardUserDefaults().valueForKey("uid") as? String
