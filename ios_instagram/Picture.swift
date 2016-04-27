@@ -77,7 +77,7 @@ class Picture {
     
     func checkIfCurrentUserLiked(completionHandler: (checkResult: Bool)->Void) -> Void {
         let ref = DataServices.dataService
-        let userUid = NSUserDefaults.standardUserDefaults().valueForKey("uid") as! String
+        let userUid = Cookies.currentUserUid()
         let pictureUid = self.pictureKey
         
         let targetRef = ref.pictureLikesRef(pictureUid).childByAppendingPath(userUid)
@@ -92,7 +92,7 @@ class Picture {
         let ref = DataServices.dataService
         
         // get required uids
-        let userUid = NSUserDefaults.standardUserDefaults().valueForKey("uid") as! String
+        let userUid = Cookies.currentUserUid()
         let pictureUid = self.pictureKey
         
         // add user uid under pictures table
@@ -109,7 +109,7 @@ class Picture {
         let ref = DataServices.dataService
         
         // get required uids
-        let userUid = NSUserDefaults.standardUserDefaults().valueForKey("uid") as! String
+        let userUid = Cookies.currentUserUid()
         let pictureUid = self.pictureKey
         
         // remove user uid under pictures table
