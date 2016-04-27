@@ -10,7 +10,8 @@ import Foundation
 class User{
     private let _userkey: String!
     var username: String!
-    
+    var email :String!
+    var bio :String!
     var userkey:String!{
         return _userkey
     }
@@ -19,17 +20,23 @@ class User{
         self._userkey=key
         if let username = dict ["username"] as? String{
             self.username = username
+        }else{
+            self.username = "UserNamefound"
         }
+        
+            if let email = dict["email"] as? String{
+            self.email=email
+        }else{
+            self.email = "email@notfound.com"
+        }
+        if let bio = dict ["bio"] as? String{
+            self.bio=bio
+        }else{
+            self.bio = "BioNotfound"
     }
     
 }
+}
 
-//DataService.dataService.TWEET_REF.observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
-//    if let value = snapshot.value as? [String : AnyObject]{
-//        let tweet = Tweet(key: snapshot.key, dict: value)
-//        self.tweets.append(tweet)
-//        self.tableView.reloadData()
-//    }
-//})
 
 
