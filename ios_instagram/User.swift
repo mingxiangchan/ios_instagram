@@ -15,6 +15,9 @@ class User{
     var userkey:String!{
         return _userkey
     }
+    var postCount: Int!
+    var followerCount: Int!
+    var followingCount: Int!
     
     init (key: String, dict: [String : AnyObject]){
         self._userkey=key
@@ -24,15 +27,37 @@ class User{
             self.username = "UserNamefound"
         }
         
-            if let email = dict["email"] as? String{
+        if let email = dict["email"] as? String{
             self.email=email
         }else{
             self.email = "email@notfound.com"
         }
+        
         if let bio = dict ["bio"] as? String{
             self.bio=bio
         }else{
             self.bio = "BioNotfound"
+        }
+        
+        let postCount = dict["pictures"]?.count!
+        if postCount == nil {
+            self.postCount = 0
+        } else {
+            self.postCount = postCount
+        }
+        
+        let followerCount = dict["followers"]?.count!
+        if followerCount == nil {
+            self.followerCount = 0
+        } else {
+            self.followerCount = followerCount
+        }
+        
+        let followingCount = dict["following"]?.count!
+        if followingCount == nil {
+            self.followingCount = 0
+        } else {
+            self.followingCount = followingCount
         }
     }
     

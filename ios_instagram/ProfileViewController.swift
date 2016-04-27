@@ -9,6 +9,9 @@
 import UIKit
 
 class ProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    @IBOutlet weak var followingCountLabel: UILabel!
+    @IBOutlet weak var postCountLabel: UILabel!
+    @IBOutlet weak var followerCountLabel: UILabel!
 
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var bioTextView: UITextView!
@@ -96,6 +99,9 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         self.userNameLabel.text = self.user.username
         self.loadTitle(self.user.username.uppercaseString)
         self.bioTextView.text = self.user.bio
+        self.postCountLabel.text = "\(self.user.postCount)"
+        self.followerCountLabel.text = "\(self.user.followerCount)"
+        self.followingCountLabel.text = "\(self.user.followingCount)"
     }
     
     func loadImages()-> Void{
