@@ -27,4 +27,13 @@ class SearchDetailViewController: UIViewController {
 
 
 
+    @IBAction func onFollowButtonPressed(sender: UIButton) {
+
+        let userUid = self.userProfile.userkey
+        let ref = DataServices.dataService.CURRENT_USER_REF.childByAppendingPath("following")
+        ref.updateChildValues([userUid: "true"])
+    }
+    
 }
+
+
