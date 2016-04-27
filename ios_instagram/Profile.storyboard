@@ -216,6 +216,9 @@
                         <outlet property="bioTextView" destination="2u8-iD-s9G" id="j8V-oJ-FFG"/>
                         <outlet property="collectionView" destination="5wT-Mb-Jkv" id="mYh-OX-ecX"/>
                         <outlet property="editFollowingButton" destination="11r-fw-c8l" id="HjM-4o-8iL"/>
+                        <outlet property="followerCountLabel" destination="det-A4-Jxp" id="iyb-aH-aU2"/>
+                        <outlet property="followingCountLabel" destination="kPz-29-Ekg" id="xJT-vw-ciH"/>
+                        <outlet property="postCountLabel" destination="lQJ-xH-Osv" id="7le-AD-ega"/>
                         <outlet property="userNameLabel" destination="81k-Tv-0eZ" id="K6J-B7-qKx"/>
                         <segue destination="seN-cZ-XFW" kind="show" identifier="editProfileSegue" id="y9H-vO-AOn"/>
                     </connections>

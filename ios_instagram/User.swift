@@ -15,6 +15,9 @@ class User{
     var userkey:String!{
         return _userkey
     }
+    var postCount: Int!
+    var followerCount: Int!
+    var followingCount: Int!
     
     init (key: String, dict: [String : AnyObject]){
         self._userkey=key
@@ -24,18 +27,71 @@ class User{
             self.username = "UserNamefound"
         }
         
-            if let email = dict["email"] as? String{
+        if let email = dict["email"] as? String{
             self.email=email
         }else{
             self.email = "email@notfound.com"
         }
+        
         if let bio = dict ["bio"] as? String{
             self.bio=bio
         }else{
             self.bio = "BioNotfound"
+        }
+        
+        let postCount = dict["pictures"]?.count!
+        if postCount == nil {
+            self.postCount = 0
+        } else {
+            self.postCount = postCount
+        }
+        
+        let followerCount = dict["followers"]?.count!
+        if followerCount == nil {
+            self.followerCount = 0
+        } else {
+            self.followerCount = followerCount
+        }
+        
+        let followingCount = dict["following"]?.count!
+        if followingCount == nil {
+            self.followingCount = 0
+        } else {
+            self.followingCount = followingCount
+        }
     }
     
-}
+    func checkIfFollowingThisUser(completionHandler: (checkResult: Bool)->Void) -> Void {
+        let ref = DataServices.dataService
+        let targetRef = ref.CURRENT_USER_REF.childByAppendingPath("following").childByAppendingPath(self.userkey)
+        
+        targetRef.observeSingleEventOfType(.Value, withBlock: {snapshot in
+            let result = snapshot.value.isEqual(NSNull())
+            completionHandler(checkResult: !result)
+        })
+    }
+    
+    func followThisUser(){
+        // add selected user as following for current user
+        let currentUserUid = Cookies.currentUserUid()
+        let ref = DataServices.dataService.CURRENT_USER_REF.childByAppendingPath("following")
+        ref.updateChildValues([self.userkey: "true"])
+        
+        // add current user as follower for selected user
+        let followerRef = DataServices.dataService.USER_REF.childByAppendingPath(self.userkey).childByAppendingPath("followers")
+        followerRef.updateChildValues([currentUserUid: "true"])
+    }
+    
+    func unFollowThisUser(){
+        // remove selected user as following for current user
+        let currentUserUid = Cookies.currentUserUid()
+        let ref = DataServices.dataService.CURRENT_USER_REF.childByAppendingPath("following")
+        ref.childByAppendingPath(self.userkey).removeValue()
+        
+        // remove current user as follower for selected user
+        let followerRef = DataServices.dataService.USER_REF.childByAppendingPath(self.userkey).childByAppendingPath("followers")
+        followerRef.childByAppendingPath(currentUserUid).removeValue()
+    }
 }
 
 
