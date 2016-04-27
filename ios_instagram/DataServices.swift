@@ -40,4 +40,12 @@ class DataServices {
         
         return currentUser!
     }
+    
+    func pictureLikesRef(pictureUid: String) -> Firebase{
+        return self.PICTURE_REF.childByAppendingPath(pictureUid).childByAppendingPath("users_who_liked")
+    }
+    
+    func userLikesRef(userUid: String) -> Firebase{
+        return self.CURRENT_USER_REF.childByAppendingPath("liked_pictures")
+    }
 }

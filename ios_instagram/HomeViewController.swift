@@ -36,13 +36,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCellWithIdentifier("PictureCell")! as! PictureTableViewCell
         let picture = self.pictures[indexPath.section]
-        let resizedImage = ImageResizer().resize(picture.image, targetWidth: cell.bounds.width)
-        cell.setImageView(resizedImage)
-        if picture.caption == nil || picture.caption == "" {
-            cell.hideCaption()
-        } else {
-            cell.setCaption(picture.formattedDescription())
-        }
+        cell.initializeContents(picture)
         cell.delegate = self
         return cell
     }
@@ -59,7 +53,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func loadPictures(uid: String){
         let userRef = DataServices.dataService.USER_REF.childByAppendingPath(uid)
         let userPictures = userRef.childByAppendingPath("pictures")
-        userPictures.observeEventType(.ChildAdded, withBlock: { snapshot in
+        userPictures.queryLimitedToLast(10).observeEventType(.ChildAdded, withBlock: { snapshot in
             if snapshot.value != nil {
                 let pictureRef = DataServices.dataService.PICTURE_REF.childByAppendingPath(snapshot.key)
                 pictureRef.observeSingleEventOfType(.Value, withBlock: { pictureInfo in
@@ -69,19 +63,39 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                         
                         let picture = Picture.init(key: pictureInfo.key, dict: picture_dict, userDict: userDict)
                         self.pictures.append(picture)
+                        self.addPictureChangesListener(picture)
                         self.tableView.reloadData()
                     })
-
                 })
             }
         })
     }
-
+    
+    func addPictureChangesListener(picture: Picture){
+        let ref = DataServices.dataService.PICTURE_REF.childByAppendingPath(picture.pictureKey)
+        ref.observeEventType(.Value, withBlock: {snapshot in
+            let pictureDict = snapshot.value as! NSDictionary
+            picture.updateFromDict(pictureDict)
+            self.tableView.reloadData()
+        })
+    }
     
     func onCommentsButtonPressed(sender: PictureTableViewCell) {
         let sectionIndex = self.tableView.indexPathForCell(sender)!.section
         let picture = self.pictures[sectionIndex]
         self.performSegueWithIdentifier("toCommentsSegue", sender: picture)
+    }
+    
+    func onLikeButtonPressed(sender: PictureTableViewCell) {
+        let sectionIndex = self.tableView.indexPathForCell(sender)!.section
+        let picture = self.pictures[sectionIndex]
+        picture.checkIfCurrentUserLiked({checkResult in
+            if checkResult{
+                picture.removeLike()
+            } else {
+                picture.addLike()
+            }
+        })
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

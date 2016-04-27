@@ -13,15 +13,26 @@ class Picture {
     var image: UIImage!
     var user: NSDictionary?
     var caption: String?
+    var numLikes: Int!
     private let _pictureKey: String!
     
     init(key: String, dict: NSDictionary, userDict: NSDictionary?=nil){
         self._pictureKey = key
+        self.user = userDict
+        self.updateFromDict(dict)
+    }
+    
+    func updateFromDict(dict: NSDictionary){
         let imageString = dict["image_data"] as? String
         let image = self.decodeImage(imageString!)
         
         self.image = image
-        self.user = userDict
+        let numLikes = dict["users_who_liked"]?.count!
+        if numLikes == nil {
+            self.numLikes = 0
+        } else {
+            self.numLikes = numLikes
+        }
         
         if let imageCaption = dict["caption"] as? String{
             self.caption = imageCaption
@@ -62,5 +73,52 @@ class Picture {
         let bodyFontAttr = [NSFontAttributeName: UIFont.systemFontOfSize(15.0)]
         let attributedBody = NSAttributedString(string: self.caption!, attributes: bodyFontAttr)
         return attributedBody
+    }
+    
+    func checkIfCurrentUserLiked(completionHandler: (checkResult: Bool)->Void) -> Void {
+        let ref = DataServices.dataService
+        let userUid = NSUserDefaults.standardUserDefaults().valueForKey("uid") as! String
+        let pictureUid = self.pictureKey
+        
+        let targetRef = ref.pictureLikesRef(pictureUid).childByAppendingPath(userUid)
+        
+        targetRef.observeSingleEventOfType(.Value, withBlock: {snapshot in
+            let result = snapshot.value.isEqual(NSNull())
+            completionHandler(checkResult: !result)
+        })
+    }
+    
+    func addLike(){
+        let ref = DataServices.dataService
+        
+        // get required uids
+        let userUid = NSUserDefaults.standardUserDefaults().valueForKey("uid") as! String
+        let pictureUid = self.pictureKey
+        
+        // add user uid under pictures table
+        ref.pictureLikesRef(pictureUid).updateChildValues([userUid: "true"])
+        
+        // add picture uid under users table
+        ref.userLikesRef(userUid).updateChildValues([pictureUid: "true"])
+        
+        ref.pictureLikesRef(pictureUid).observeSingleEventOfType(.Value, withBlock: {snapshot in print(snapshot)})
+        ref.userLikesRef(userUid).observeSingleEventOfType(.Value, withBlock: {snapshot in print(snapshot)})
+    }
+    
+    func removeLike(){
+        let ref = DataServices.dataService
+        
+        // get required uids
+        let userUid = NSUserDefaults.standardUserDefaults().valueForKey("uid") as! String
+        let pictureUid = self.pictureKey
+        
+        // remove user uid under pictures table
+        ref.pictureLikesRef(pictureUid).childByAppendingPath(userUid).removeValue()
+        
+        // remove picture uid under users table
+        ref.userLikesRef(userUid).childByAppendingPath(pictureUid).removeValue()
+        
+        ref.pictureLikesRef(pictureUid).observeSingleEventOfType(.Value, withBlock: {snapshot in print(snapshot)})
+        ref.userLikesRef(userUid).observeSingleEventOfType(.Value, withBlock: {snapshot in print(snapshot)})
     }
 }
