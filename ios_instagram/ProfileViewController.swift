@@ -17,14 +17,13 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     var pictures = [Picture]()
     var userUid : String?
+    var user: User!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView.backgroundColor = UIColor.clearColor()
         self.editFollowingButton.layer.cornerRadius = 10
         self.checkUser()
-        self.loadPersonalInfo()
-        self.loadImages()
     }
     
     func checkIfLoggedInUser() -> Bool{
@@ -34,21 +33,35 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     func checkUser(){
         if self.userUid == nil {
             self.userUid = Cookies.currentUserUid()
-        } else {
-            self.toggleFollowButton()
         }
+        self.setUser()
+    }
+    
+    func setUser(){
+        let ref = DataServices.dataService.USER_REF.childByAppendingPath(self.userUid)
+        ref.observeEventType(.Value, withBlock: {snapshot in
+            let userDict = snapshot.value as! [String : AnyObject]
+            let user = User.init(key: snapshot.key, dict: userDict)
+            self.user = user
+            self.loadPersonalInfo()
+            self.loadImages()
+            if !self.checkIfLoggedInUser(){
+                self.toggleFollowButton()
+            }
+        })
     }
     
     @IBAction func onEditFollowingButtonPressed(sender: AnyObject) {
         if self.checkIfLoggedInUser(){
             self.performSegueWithIdentifier("editProfileSegue", sender: self)
         } else {
-            self.checkIfFollowingThisUser({checkResult in
+            self.user.checkIfFollowingThisUser({checkResult in
                 if checkResult {
-                    self.unFollowThisUser()
+                    self.user.unFollowThisUser()
                 } else {
-                    self.followThisUser()
+                    self.user.followThisUser()
                 }
+                self.toggleFollowButton()
             })
             
         }
@@ -80,16 +93,9 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     func loadPersonalInfo() -> Void{
-        let ref = DataServices.dataService.USER_REF.childByAppendingPath(self.userUid)
-        ref.observeEventType(.Value, withBlock:{ snapshot -> Void in
-            if let username=snapshot.value["username"] as? String{
-                self.userNameLabel.text=username
-                self.loadTitle(username.uppercaseString)
-            }
-            if let bio = snapshot.value["bio"] as? String{
-                self.bioTextView.text = bio
-            }
-        })
+        self.userNameLabel.text = self.user.username
+        self.loadTitle(self.user.username.uppercaseString)
+        self.bioTextView.text = self.user.bio
     }
     
     func loadImages()-> Void{
@@ -114,53 +120,11 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         self.navigationItem.titleView = lbNavTitle;
     }
     
-    func checkIfFollowingThisUser(completionHandler: (checkResult: Bool)->Void) -> Void {
-        let ref = DataServices.dataService
-        let targetRef = ref.CURRENT_USER_REF.childByAppendingPath("following").childByAppendingPath(self.userUid!)
-        
-        targetRef.observeSingleEventOfType(.Value, withBlock: {snapshot in
-            let result = snapshot.value.isEqual(NSNull())
-            completionHandler(checkResult: !result)
-        })
-    }
-    
-    func followThisUser(){
-        // add selected user as following for current user
-        let currentUserUid = Cookies.currentUserUid()
-        let ref = DataServices.dataService.CURRENT_USER_REF.childByAppendingPath("following")
-        ref.updateChildValues([self.userUid!: "true"])
-        
-        // add current user as follower for selected user
-        let followerRef = DataServices.dataService.USER_REF.childByAppendingPath(self.userUid).childByAppendingPath("followers")
-        followerRef.updateChildValues([currentUserUid: "true"])
-        self.toggleFollowButton()
-        
-        print("Followed this user")
-        ref.observeSingleEventOfType(.Value, withBlock: {snapshot in print(snapshot)})
-        followerRef.observeSingleEventOfType(.Value, withBlock: {snapshot in print(snapshot)})
-    }
-    
-    func unFollowThisUser(){
-        // remove selected user as following for current user
-        let currentUserUid = Cookies.currentUserUid()
-        let ref = DataServices.dataService.CURRENT_USER_REF.childByAppendingPath("following")
-        ref.childByAppendingPath(self.userUid!).removeValue()
-        
-        // remove current user as follower for selected user
-        let followerRef = DataServices.dataService.USER_REF.childByAppendingPath(self.userUid).childByAppendingPath("followers")
-        followerRef.childByAppendingPath(currentUserUid).removeValue()
-        self.toggleFollowButton()
-        
-        print("Unfollowed this user")
-        ref.observeSingleEventOfType(.Value, withBlock: {snapshot in print(snapshot)})
-        followerRef.observeSingleEventOfType(.Value, withBlock: {snapshot in print(snapshot)})
-    }
-    
     func toggleFollowButton(){
         self.editFollowingButton.layer.borderColor = UIColor.blueColor().CGColor
         self.editFollowingButton.layer.borderWidth = 2
         
-        self.checkIfFollowingThisUser({checkResult in
+        self.user.checkIfFollowingThisUser({checkResult in
             if checkResult{
                 self.editFollowingButton.backgroundColor = UIColor.blueColor()
                 self.editFollowingButton.setTitle("Following", forState: UIControlState.Normal)
