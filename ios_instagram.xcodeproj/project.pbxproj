@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		19294B6A1CCB4CA7007D6240 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19294B691CCB4CA6007D6240 /* ProfileViewController.swift */; };
-		193CEF2C1CCF39970092C6A6 /* SearchDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193CEF2B1CCF39970092C6A6 /* SearchDetailViewController.swift */; };
 		1982C6EB1CCF138E00F29B0E /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1982C6EA1CCF138E00F29B0E /* SearchViewController.swift */; };
 		19DEDBAF1CCA000B00F79E47 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DEDBAE1CCA000B00F79E47 /* User.swift */; };
 		19F3E72C1CCCC78A00601A4C /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F3E72B1CCCC78A00601A4C /* EditProfileViewController.swift */; };
@@ -39,7 +38,6 @@
 
 /* Begin PBXFileReference section */
 		19294B691CCB4CA6007D6240 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		193CEF2B1CCF39970092C6A6 /* SearchDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchDetailViewController.swift; path = ../SearchDetailViewController.swift; sourceTree = "<group>"; };
 		1982C6EA1CCF138E00F29B0E /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		19DEDBAE1CCA000B00F79E47 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		19F3E72B1CCCC78A00601A4C /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
@@ -174,7 +172,6 @@
 				B927302E1CCE26FE00C50CC8 /* ShareViewController.swift */,
 				B92730361CCF3E3000C50CC8 /* CommentsViewController.swift */,
 				1982C6EA1CCF138E00F29B0E /* SearchViewController.swift */,
-				193CEF2B1CCF39970092C6A6 /* SearchDetailViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -324,7 +321,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1982C6EB1CCF138E00F29B0E /* SearchViewController.swift in Sources */,
-				193CEF2C1CCF39970092C6A6 /* SearchDetailViewController.swift in Sources */,
 				B927302F1CCE26FE00C50CC8 /* ShareViewController.swift in Sources */,
 				B9C0A56A1CC9F43300E30EF1 /* HomeViewController.swift in Sources */,
 				B9C0A54A1CC9E0FB00E30EF1 /* LoginViewController.swift in Sources */,
