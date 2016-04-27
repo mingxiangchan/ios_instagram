@@ -18,7 +18,7 @@ class CommentsViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
         self.loadTitle("COMMENTS")
         self.loadComments()
-        // Do any additional setup after loading the view.
+        // Do any additionawl setup after loading the view.
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -60,6 +60,7 @@ class CommentsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         let cell = self.tableView.dequeueReusableCellWithIdentifier("CommentCell")!
         if indexPath.row == 0 {
             //load picture caption on first row
@@ -69,6 +70,8 @@ class CommentsViewController: UIViewController, UITableViewDelegate, UITableView
             let comment = self.comments[indexPath.row-1]
             cell.textLabel!.attributedText = comment.formattedForTextView()
         }
+        cell.textLabel!.numberOfLines = 0
+        cell.textLabel!.lineBreakMode = NSLineBreakMode.ByWordWrapping
         self.updateContentInsetForTableView(tableView, animated: false)
         return cell
     }
