@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,  UISearchBarDelegate {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, PictureTableViewCellDelegate {
     @IBOutlet weak var tableView: UITableView!
     var pictures = [Picture]()
     
@@ -38,12 +38,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let picture = self.pictures[indexPath.section]
         let resizedImage = ImageResizer().resize(picture.image, targetWidth: cell.bounds.width)
         cell.setImageView(resizedImage)
-        if picture.caption != nil {
-            cell.setCaption(picture.caption!)
+        if picture.caption == nil || picture.caption == "" {
+            cell.hideCaption()
+        } else {
+            cell.setCaption(picture.formattedDescription())
         }
-        print("Picture Frame \(cell.mainImageView.frame)")
-        print("Caption Frame \(cell.captionLabel.frame)")
-        print("Cell Frame \(cell.frame)")
+        cell.delegate = self
         return cell
     }
     
@@ -76,11 +76,21 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         })
     }
+
     
-    func searchBar(searchBar: UISearchBar, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
-        print("test")
-        self.tableView.reloadData()
-        return true
+    func onCommentsButtonPressed(sender: PictureTableViewCell) {
+        let sectionIndex = self.tableView.indexPathForCell(sender)!.section
+        let picture = self.pictures[sectionIndex]
+        self.performSegueWithIdentifier("toCommentsSegue", sender: picture)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "toCommentsSegue" {
+            let destination = segue.destinationViewController as! CommentsViewController
+            if let picture = sender as? Picture {
+                destination.picture = picture
+            }
+        }
     }
     
 }

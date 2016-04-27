@@ -32,4 +32,35 @@ class Picture {
         let image_data = NSData(base64EncodedString: imageString, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters)
         return UIImage(data: image_data!)!
     }
+    
+    var pictureKey: String {
+        return _pictureKey
+    }
+    
+    func formattedDescription() -> NSAttributedString{
+        let result = NSMutableAttributedString()
+        result.insertAttributedString(self.formattedUsername(), atIndex: 0)
+        if self.caption != nil {
+            let lastCharIndex = result.length
+            result.insertAttributedString(self.formattedCaption(), atIndex: lastCharIndex)
+        }
+        return NSAttributedString.init(attributedString: result)
+    }
+    
+    func formattedUsername() -> NSAttributedString {
+        // highlight username and add link
+        // pending fix for userUid
+        // let userUidAttr = ["NSLinkAttributeName", "userUid"]
+        let username = self.user!["username"] as! String + ": "
+        let fontAttrs = [NSFontAttributeName: UIFont.boldSystemFontOfSize(15.0),
+                         NSForegroundColorAttributeName: UIColor.blueColor()]
+        let attributedUsername = NSAttributedString(string: username, attributes: fontAttrs)
+        return attributedUsername
+    }
+    
+    func formattedCaption() -> NSAttributedString {
+        let bodyFontAttr = [NSFontAttributeName: UIFont.systemFontOfSize(15.0)]
+        let attributedBody = NSAttributedString(string: self.caption!, attributes: bodyFontAttr)
+        return attributedBody
+    }
 }
