@@ -56,7 +56,10 @@
                                                                 <constraint firstAttribute="width" constant="20" id="9a9-YM-egg"/>
                                                                 <constraint firstAttribute="height" constant="20" id="KNc-2q-DpB"/>
                                                             </constraints>
-                                                            <state key="normal" image="favorite"/>
+                                                            <state key="normal" image="heart"/>
+                                                            <connections>
+                                                                <action selector="onLikeButtonPressed:" destination="SqP-uH-h3g" eventType="touchUpInside" id="LMm-Wb-eWw"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hme-09-UHh">
                                                             <rect key="frame" x="50" y="123.5" width="20" height="20"/>
@@ -128,6 +131,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="captionLabel" destination="f2E-14-8aB" id="WRF-bF-eQb"/>
+                                            <outlet property="likeButton" destination="DHx-zu-Gz8" id="hkc-Ui-bnD"/>
                                             <outlet property="mainImageView" destination="852-mH-xiT" id="q9V-zY-GAv"/>
                                         </connections>
                                     </tableViewCell>
@@ -303,7 +307,7 @@
     </scenes>
     <resources>
         <image name="arrows (1)" width="32" height="32"/>
-        <image name="favorite" width="64" height="64"/>
+        <image name="heart" width="64" height="64"/>
         <image name="shape" width="32" height="32"/>
     </resources>
 </document>

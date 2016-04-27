@@ -84,6 +84,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.performSegueWithIdentifier("toCommentsSegue", sender: picture)
     }
     
+    func onLikeButtonPressed(sender: PictureTableViewCell) {
+        let sectionIndex = self.tableView.indexPathForCell(sender)!.section
+        let picture = self.pictures[sectionIndex]
+        picture.addLike()
+        sender.likeButton.enabled = false
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "toCommentsSegue" {
             let destination = segue.destinationViewController as! CommentsViewController

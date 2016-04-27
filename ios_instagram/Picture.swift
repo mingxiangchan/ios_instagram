@@ -63,4 +63,14 @@ class Picture {
         let attributedBody = NSAttributedString(string: self.caption!, attributes: bodyFontAttr)
         return attributedBody
     }
+    
+    func addLike(){
+        // add like under likes table
+        let ref = DataServices.dataService
+        let likeRef = ref.LIKE_REF.childByAutoId()
+        let likeUid = likeRef.key
+        
+        // add like uid under pictures table
+        // add like uid under users table
+    }
 }

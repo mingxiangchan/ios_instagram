@@ -9,6 +9,7 @@
 import UIKit
 
 class PictureTableViewCell: UITableViewCell {
+    @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var mainImageView: UIImageView!
     @IBOutlet weak var captionLabel: UILabel!
     weak var delegate:PictureTableViewCellDelegate?
@@ -34,8 +35,25 @@ class PictureTableViewCell: UITableViewCell {
         self.captionLabel.hidden = true
         self.captionLabel.heightAnchor.constraintEqualToConstant(0)
     }
+    
+    @IBAction func onLikeButtonPressed(sender: UIButton) {
+        self.toggleLikeButton()
+        self.delegate?.onLikeButtonPressed(self)
+    }
+    
+    func toggleLikeButton(){
+        let currentButtonImage = self.likeButton.imageView!.image
+        let unTappedButtonImage = UIImage(named: "heart")
+        let TappedButtonImage = UIImage(named: "heart_red")
+        if currentButtonImage == unTappedButtonImage{
+            self.likeButton.imageView!.image = TappedButtonImage
+        } else if currentButtonImage == TappedButtonImage{
+            self.likeButton.imageView!.image = unTappedButtonImage
+        }
+    }
 }
 
 protocol PictureTableViewCellDelegate: class {
     func onCommentsButtonPressed(sender: PictureTableViewCell)
+    func onLikeButtonPressed(sender: PictureTableViewCell)
 }
