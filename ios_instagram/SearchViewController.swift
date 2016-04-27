@@ -74,16 +74,18 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let destination = ProfileViewController()
+        let storyboard = UIStoryboard(name: "Profile", bundle: nil)
+        let destination = storyboard.instantiateViewControllerWithIdentifier("profileVC") as! ProfileViewController
+    
+//        self.storyboard.viewcon
         if filteredUsers.count > 0 {
             if (searchController.active == true && searchController.searchBar.text != "") {
                 let user = filteredUsers[indexPath.row]
                 destination.userUid = user.userkey
-
-            }else{
-                let user = usersArray[indexPath.row]
-                destination.userUid = user.userkey
             }
+        }else{
+            let user = usersArray[indexPath.row]
+            destination.userUid = user.userkey
         }
         self.navigationController?.pushViewController(destination, animated: true)
     }

@@ -8,8 +8,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-
+class ProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var bioTextView: UITextView!
@@ -37,7 +36,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PictureCell", forIndexPath: indexPath)
         let picture = self.pictures[indexPath.row]
         let imageView = UIImageView()
-        let imageWidth = (self.collectionView.frame.size.width - 40)/4
+        let imageWidth = (self.collectionView.frame.size.width - 15)/3
         imageView.frame = CGRectMake(0, 0, imageWidth, imageWidth)
         imageView.image = picture.image
         cell.addSubview(imageView)
@@ -46,8 +45,12 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         // set size for collectionviewcell to 1/4th of page with 10 line spacing
-        let imageWidth = (self.collectionView.frame.size.width - 40)/4
+        let imageWidth = (self.collectionView.frame.size.width - 15)/3
         return CGSizeMake(imageWidth, imageWidth)
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 5
     }
     
     func loadPersonalInfo() -> Void{

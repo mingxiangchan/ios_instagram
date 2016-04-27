@@ -78,7 +78,7 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PhotoCell", forIndexPath: indexPath)
         let image = self.images[indexPath.row]
         let imageView = UIImageView()
-        let imageWidth = (self.view.frame.size.width - 40)/4
+        let imageWidth = (self.view.frame.size.width - 20)/4
         imageView.frame = CGRectMake(0, 0, imageWidth, imageWidth)
         imageView.image = image
         // set cell to semi transparent if selected
@@ -92,7 +92,7 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         // set size for collectionviewcell to 1/4th of page with 10 line spacing
-        let imageWidth = (self.view.frame.size.width - 40)/4
+        let imageWidth = (self.view.frame.size.width - 20)/4
         return CGSizeMake(imageWidth, imageWidth)
     }
     
@@ -101,6 +101,10 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
         self.selectedImageView.image = self.images[indexPath.row]
         self.currentOverlayIndex = indexPath.row
         self.galleryCollectionVIew.reloadData()
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 5
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
