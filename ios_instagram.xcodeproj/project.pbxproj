@@ -31,6 +31,7 @@
 		B9C0A56A1CC9F43300E30EF1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C0A5691CC9F43300E30EF1 /* HomeViewController.swift */; };
 		B9C0A56E1CC9FC6600E30EF1 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C0A56D1CC9FC6600E30EF1 /* GalleryViewController.swift */; };
 		B9D726381CCDE74E00DC8012 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9D726371CCDE74E00DC8012 /* Home.storyboard */; };
+		B9E802661CD0ABF200349C71 /* Cookies.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E802651CD0ABF200349C71 /* Cookies.swift */; };
 		B9EEA5361CCDB09B004DC2C3 /* Picture.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EEA5351CCDB09B004DC2C3 /* Picture.swift */; };
 		B9EEA5381CCDBE6F004DC2C3 /* ImageResizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EEA5371CCDBE6F004DC2C3 /* ImageResizer.swift */; };
 		B9EEA53A1CCDC199004DC2C3 /* PictureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EEA5391CCDC199004DC2C3 /* PictureTableViewCell.swift */; };
@@ -63,6 +64,7 @@
 		B9C0A5691CC9F43300E30EF1 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B9C0A56D1CC9FC6600E30EF1 /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
 		B9D726371CCDE74E00DC8012 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = SOURCE_ROOT; };
+		B9E802651CD0ABF200349C71 /* Cookies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cookies.swift; sourceTree = "<group>"; };
 		B9EEA5351CCDB09B004DC2C3 /* Picture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Picture.swift; sourceTree = "<group>"; };
 		B9EEA5371CCDBE6F004DC2C3 /* ImageResizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageResizer.swift; sourceTree = "<group>"; };
 		B9EEA5391CCDC199004DC2C3 /* PictureTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureTableViewCell.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 			children = (
 				B9C0A5471CC9E0FB00E30EF1 /* AppDelegate.swift */,
 				B9C0A5601CC9E24100E30EF1 /* DataServices.swift */,
+				B9E802651CD0ABF200349C71 /* Cookies.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1982C6EB1CCF138E00F29B0E /* SearchViewController.swift in Sources */,
+				B9E802661CD0ABF200349C71 /* Cookies.swift in Sources */,
 				B927302F1CCE26FE00C50CC8 /* ShareViewController.swift in Sources */,
 				B9C0A56A1CC9F43300E30EF1 /* HomeViewController.swift in Sources */,
 				B9C0A54A1CC9E0FB00E30EF1 /* LoginViewController.swift in Sources */,

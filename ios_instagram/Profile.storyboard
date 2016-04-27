@@ -132,7 +132,7 @@
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="seN-cZ-XFW" kind="show" id="yoO-Hh-NVp"/>
+                                                    <action selector="onEditFollowingButtonPressed:" destination="cCU-c7-wZf" eventType="touchUpInside" id="l5L-Od-bIa"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -215,7 +215,9 @@
                     <connections>
                         <outlet property="bioTextView" destination="2u8-iD-s9G" id="j8V-oJ-FFG"/>
                         <outlet property="collectionView" destination="5wT-Mb-Jkv" id="mYh-OX-ecX"/>
+                        <outlet property="editFollowingButton" destination="11r-fw-c8l" id="HjM-4o-8iL"/>
                         <outlet property="userNameLabel" destination="81k-Tv-0eZ" id="K6J-B7-qKx"/>
+                        <segue destination="seN-cZ-XFW" kind="show" identifier="editProfileSegue" id="y9H-vO-AOn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3cc-2V-ckz" userLabel="First Responder" sceneMemberID="firstResponder"/>
