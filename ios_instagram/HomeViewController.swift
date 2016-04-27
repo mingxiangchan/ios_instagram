@@ -71,7 +71,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                         self.pictures.append(picture)
                         self.tableView.reloadData()
                     })
-
                 })
             }
         })
@@ -87,8 +86,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func onLikeButtonPressed(sender: PictureTableViewCell) {
         let sectionIndex = self.tableView.indexPathForCell(sender)!.section
         let picture = self.pictures[sectionIndex]
-        picture.addLike()
-        sender.likeButton.enabled = false
+        picture.checkIfCurrentUserLiked()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
