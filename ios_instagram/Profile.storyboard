@@ -6,10 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--My Profile View Controller-->
+        <!--Profile View Controller-->
         <scene sceneID="xX1-AB-bFo">
             <objects>
-                <viewController id="cCU-c7-wZf" customClass="MyProfileViewController" customModule="ios_instagram" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="cCU-c7-wZf" customClass="ProfileViewController" customModule="ios_instagram" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8bl-Mj-SJL"/>
                         <viewControllerLayoutGuide type="bottom" id="DDj-XR-1TC"/>

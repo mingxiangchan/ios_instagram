@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class ProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
 
     @IBOutlet weak var userNameLabel: UILabel!
@@ -16,10 +16,15 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
     @IBOutlet weak var collectionView: UICollectionView!
     
     var pictures = [Picture]()
-  
+    var userUid : String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView.backgroundColor = UIColor.clearColor()
+        
+        if self.userUid == nil {
+            self.userUid = NSUserDefaults.standardUserDefaults().valueForKey("uid") as! String
+        }
         self.loadPersonalInfo()
         self.loadImages()
     }
@@ -46,7 +51,8 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
     }
     
     func loadPersonalInfo() -> Void{
-        DataServices.dataService.CURRENT_USER_REF.observeEventType(.Value, withBlock:{ snapshot -> Void in
+        let ref = DataServices.dataService.USER_REF.childByAppendingPath(self.userUid)
+        ref.observeEventType(.Value, withBlock:{ snapshot -> Void in
             if let username=snapshot.value["username"] as? String{
                 self.userNameLabel.text=username
                 self.loadTitle(username.uppercaseString)
@@ -58,7 +64,7 @@ class MyProfileViewController: UIViewController, UICollectionViewDelegate, UICol
     }
     
     func loadImages()-> Void{
-        let ref = DataServices.dataService.CURRENT_USER_REF.childByAppendingPath("pictures")
+        let ref = DataServices.dataService.USER_REF.childByAppendingPath(self.userUid).childByAppendingPath("pictures")
         ref.observeEventType(.ChildAdded, withBlock: { pictureIndex in
             let pictureRef = DataServices.dataService.PICTURE_REF.childByAppendingPath(pictureIndex.key)
             pictureRef.observeSingleEventOfType(.Value, withBlock: { pictureInfo in
