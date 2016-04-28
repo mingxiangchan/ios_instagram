@@ -19,6 +19,7 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.loadTitle("SEARCH")
         DataServices.dataService.USER_REF.observeEventType(.ChildAdded, withBlock: { (snapshot)-> Void in
             if let value = snapshot.value as? [String : AnyObject]{
                 let user = User(key:snapshot.key, dict:value)
@@ -88,6 +89,19 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
             destination.userUid = user.userkey
         }
         self.navigationController?.pushViewController(destination, animated: true)
+    }
+    
+    func loadTitle(string: String)->Void{
+        let lbNavTitle = UILabel()
+        lbNavTitle.frame = CGRectMake(-20,40,320,40)
+        lbNavTitle.textAlignment = NSTextAlignment.Left
+        let attributes = [NSFontAttributeName: UIFont.init(name: "HelveticaNeue-Bold" , size: 18)!]
+        let attributedString = NSAttributedString(string: string, attributes: attributes)
+        lbNavTitle.textColor = UIColor.whiteColor()
+        lbNavTitle.attributedText = attributedString
+        self.navigationItem.titleView = lbNavTitle;
+        self.navigationController?.navigationBar.barTintColor = PRIMARY_BLUE_COLOR
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
     }
 
 }
