@@ -159,7 +159,7 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Y54-xb-Lyc" firstAttribute="top" secondItem="qxa-Ik-uNk" secondAttribute="bottom" id="387-LV-yhd"/>
                             <constraint firstItem="Y54-xb-Lyc" firstAttribute="leading" secondItem="IJd-kM-SvV" secondAttribute="leadingMargin" id="Acd-hO-3Kc"/>

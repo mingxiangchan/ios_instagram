@@ -15,6 +15,7 @@ class EditProfileViewController: UIViewController {
     @IBOutlet weak var editBioTextLabel: UITextField!
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.loadTitle("EDIT PROFILE")

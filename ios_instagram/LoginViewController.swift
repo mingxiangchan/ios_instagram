@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var emailTextField: UITextField!
@@ -91,6 +91,14 @@ class LoginViewController: UIViewController {
     @IBAction func onSignUpButtonPressed(sender: UIButton) {
         
     }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        if(self.emailTextField.text != "" && self.passwordtextField.text != ""){
+            self.adjustLoginButton(1)
+        }
+    }
+    
+    @IBAction func unwindToLogin(segue: UIStoryboardSegue) {}
 }
 
 //let currentUserId = NSUserDefaults.standardUserDefaults().valueForKey("uid") as? String
