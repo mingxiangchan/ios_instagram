@@ -67,16 +67,35 @@ class CommentsViewController: UIViewController, UITableViewDelegate, UITableView
         if indexPath.row == 0 {
             //load picture caption on first row
             cell.textLabel!.attributedText = self.picture.formattedDescription()
+            for view in cell.contentView.subviews{
+                if view.isMemberOfClass(UIView){
+                    view.layer.zPosition = 1
+                }
+            }
         } else {
             // load comments
             let comment = self.comments[indexPath.row-1]
             cell.textLabel!.attributedText = comment.formattedForTextView()
+            for view in cell.contentView.subviews{
+                if view.isMemberOfClass(UIView){
+                    view.hidden = true
+                }
+            }
         }
         cell.textLabel!.numberOfLines = 0
         cell.textLabel!.lineBreakMode = NSLineBreakMode.ByWordWrapping
         self.updateContentInsetForTableView(tableView, animated: false)
         return cell
     }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.row == 0{
+            return 80.0
+        }
+        return 40
+    }
+    
+
 
     func loadTitle(string: String)->Void{
         let lbNavTitle = UILabel()

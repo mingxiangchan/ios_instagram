@@ -208,6 +208,20 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SVf-Rk-XMl" id="hOw-DJ-xTL">
                                             <rect key="frame" x="0.0" y="0.0" width="560" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e9S-0M-G9o">
+                                                    <rect key="frame" x="8" y="34.5" width="544" height="1"/>
+                                                    <color key="backgroundColor" red="0.6670279777" green="0.6670279777" blue="0.6670279777" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="jlZ-nZ-34B"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="e9S-0M-G9o" secondAttribute="trailing" id="RHC-0w-igp"/>
+                                                <constraint firstItem="e9S-0M-G9o" firstAttribute="leading" secondItem="hOw-DJ-xTL" secondAttribute="leadingMargin" id="W6R-KS-23c"/>
+                                                <constraint firstItem="e9S-0M-G9o" firstAttribute="bottom" secondItem="hOw-DJ-xTL" secondAttribute="bottomMargin" id="qRq-dw-N0Y"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
