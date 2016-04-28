@@ -34,6 +34,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             LOGIN_COLORS
         self.view.layer.insertSublayer(self.gradient, atIndex: 0)
         self.animateLayer(self.randomColor().CGColor, bottomColor: self.randomColor().CGColor)
+        self.loadBackButton()
     }
     
     func randomColor() -> UIColor{
@@ -109,4 +110,12 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             self.adjustSignUpButton(1)
         }
     }
+    
+    func loadBackButton(){
+        let backButton = UIBarButtonItem()
+        backButton.title = ""
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController!.navigationBar.topItem!.backBarButtonItem = backButton
+    }
+
 }

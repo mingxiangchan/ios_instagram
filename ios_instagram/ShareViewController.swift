@@ -71,6 +71,7 @@ class ShareViewController: UIViewController {
     func loadBackButton(){
         let backButton = UIBarButtonItem()
         backButton.title = ""
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController!.navigationBar.topItem!.backBarButtonItem = backButton
     }
 

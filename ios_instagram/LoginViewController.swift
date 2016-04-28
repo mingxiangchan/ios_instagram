@@ -48,7 +48,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.gradient.colors =
             LOGIN_COLORS
         self.view.layer.insertSublayer(self.gradient, atIndex: 0)
-        self.animateLayer(self.randomColor().CGColor, bottomColor: self.randomColor().CGColor)
+        self.animateLayer(LOGIN_COLORS[0], bottomColor: self.randomColor().CGColor)
     }
     
     func adjustLoginButton(alpha: CGFloat){
@@ -71,7 +71,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         animation.fillMode              = kCAFillModeForwards;
         animation.timingFunction        = CAMediaTimingFunction.init(name: kCAMediaTimingFunctionLinear)
         animation.delegate              = self;
-        CATransaction.setCompletionBlock({ self.animateLayer(self.randomColor().CGColor, bottomColor: self.randomColor().CGColor)})
+        CATransaction.setCompletionBlock({ self.animateLayer(bottomColor, bottomColor: self.randomColor().CGColor)})
         self.gradient.addAnimation(animation, forKey: "animateGradient")
         CATransaction.commit()
         
