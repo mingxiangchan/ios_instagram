@@ -14,6 +14,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.loadTitle("FEED")
         self.tableView.estimatedRowHeight = 30
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.loadFeed()
@@ -52,17 +53,18 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func loadPictures(uid: String){
         let userRef = DataServices.dataService.USER_REF.childByAppendingPath(uid)
-        let userPictures = userRef.childByAppendingPath("pictures")
-        userPictures.queryLimitedToLast(10).observeEventType(.ChildAdded, withBlock: { snapshot in
+        let userPictures = userRef.childByAppendingPath("feed")
+        userPictures.queryLimitedToLast(10).queryOrderedByValue().observeEventType(.ChildAdded, withBlock: { snapshot in
             if snapshot.value != nil {
                 let pictureRef = DataServices.dataService.PICTURE_REF.childByAppendingPath(snapshot.key)
                 pictureRef.observeSingleEventOfType(.Value, withBlock: { pictureInfo in
                     let picture_dict = pictureInfo.value as! NSDictionary
-                    userRef.observeSingleEventOfType(.Value, withBlock: {userInfo in
+                    let pictureUserRef = DataServices.dataService.USER_REF.childByAppendingPath(picture_dict["user_uid"] as! String)
+                    pictureUserRef.observeSingleEventOfType(.Value, withBlock: {userInfo in
                         let userDict = userInfo.value as! NSDictionary
                         
                         let picture = Picture.init(key: pictureInfo.key, dict: picture_dict, userDict: userDict)
-                        self.pictures.append(picture)
+                        self.pictures.insert(picture, atIndex: 0)
                         self.addPictureChangesListener(picture)
                         self.tableView.reloadData()
                     })
@@ -107,4 +109,16 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    func loadTitle(string: String)->Void{
+        let lbNavTitle = UILabel()
+        lbNavTitle.frame = CGRectMake(-20,40,320,40)
+        lbNavTitle.textAlignment = NSTextAlignment.Left
+        let attributes = [NSFontAttributeName: UIFont.init(name: "HelveticaNeue-Bold" , size: 18)!]
+        let attributedString = NSAttributedString(string: string, attributes: attributes)
+        lbNavTitle.textColor = UIColor.whiteColor()
+        lbNavTitle.attributedText = attributedString
+        self.navigationItem.titleView = lbNavTitle;
+        self.navigationController?.navigationBar.barTintColor = PRIMARY_BLUE_COLOR
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+    }
 }

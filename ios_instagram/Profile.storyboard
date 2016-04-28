@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Profile View Controller-->
+        <!--Placeholder-->
         <scene sceneID="xX1-AB-bFo">
             <objects>
                 <viewController storyboardIdentifier="profileVC" id="cCU-c7-wZf" customClass="ProfileViewController" customModule="ios_instagram" customModuleProvider="target" sceneMemberID="viewController">
@@ -160,14 +160,22 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2u8-iD-s9G">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2u8-iD-s9G">
                                 <rect key="frame" x="20" y="353" width="580" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="CI9-rq-X1a"/>
                                 </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">MINGXIANGCHAN sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.070588235294117646" green="0.33725490196078434" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="14" name="HelveticaNeue-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5wT-Mb-Jkv">
@@ -211,7 +219,7 @@
                             <constraint firstAttribute="bottomMargin" secondItem="5wT-Mb-Jkv" secondAttribute="bottom" id="tPQ-pS-z3X"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Gbe-Md-nZL"/>
+                    <navigationItem key="navigationItem" title="Placeholder" id="Gbe-Md-nZL"/>
                     <connections>
                         <outlet property="bioTextView" destination="2u8-iD-s9G" id="j8V-oJ-FFG"/>
                         <outlet property="collectionView" destination="5wT-Mb-Jkv" id="mYh-OX-ecX"/>
@@ -221,11 +229,45 @@
                         <outlet property="postCountLabel" destination="lQJ-xH-Osv" id="7le-AD-ega"/>
                         <outlet property="userNameLabel" destination="81k-Tv-0eZ" id="K6J-B7-qKx"/>
                         <segue destination="seN-cZ-XFW" kind="show" identifier="editProfileSegue" id="y9H-vO-AOn"/>
+                        <segue destination="BeV-sU-h5b" kind="show" identifier="toOptionsSegue" id="4A2-w2-mwy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3cc-2V-ckz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="646" y="853"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="41q-gX-bzq">
+            <objects>
+                <viewController id="BeV-sU-h5b" customClass="OptionsViewController" customModule="ios_instagram" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="O7A-PG-RfZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="PjK-Yt-BmR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="y7w-Wd-tPD">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BLb-2h-QVA">
+                                <rect key="frame" x="40" y="70" width="61" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Log Out"/>
+                                <connections>
+                                    <action selector="onLogOutButtonPressed:" destination="BeV-sU-h5b" eventType="touchUpInside" id="dUc-kA-L60"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="BLb-2h-QVA" firstAttribute="top" secondItem="O7A-PG-RfZ" secondAttribute="bottom" constant="50" id="XDP-1j-dOT"/>
+                            <constraint firstItem="BLb-2h-QVA" firstAttribute="leading" secondItem="y7w-Wd-tPD" secondAttribute="leadingMargin" constant="20" id="cJB-By-CZ0"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="ILb-a8-x4g"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aH5-F2-jVK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1408" y="158"/>
         </scene>
         <!--EDIT PROFILE-->
         <scene sceneID="Pfg-Dr-Gdk">
@@ -424,7 +466,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="009-xN-S3K" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="ok6-V0-I3b" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1268" y="853"/>
+            <point key="canvasLocation" x="1408" y="853"/>
         </scene>
         <!--My Profile-->
         <scene sceneID="fjX-DD-m9B">
