@@ -14,7 +14,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.loadTitle("FEED")
+        self.loadTitle("MyGram")
         self.tableView.estimatedRowHeight = 30
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.loadFeed()
@@ -67,20 +67,22 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func loadPictures(uid: String){
         let userRef = DataServices.dataService.USER_REF.childByAppendingPath(uid)
         let userPictures = userRef.childByAppendingPath("feed")
-        userPictures.queryLimitedToLast(10).queryOrderedByValue().observeEventType(.ChildAdded, withBlock: { snapshot in
+        userPictures.queryOrderedByValue().queryLimitedToLast(10).observeEventType(.ChildAdded, withBlock: { snapshot in
             if snapshot.value != nil {
                 let pictureRef = DataServices.dataService.PICTURE_REF.childByAppendingPath(snapshot.key)
                 pictureRef.observeSingleEventOfType(.Value, withBlock: { pictureInfo in
-                    let picture_dict = pictureInfo.value as! NSDictionary
-                    let pictureUserRef = DataServices.dataService.USER_REF.childByAppendingPath(picture_dict["user_uid"] as! String)
-                    pictureUserRef.observeSingleEventOfType(.Value, withBlock: {userInfo in
-                        let userDict = userInfo.value as! NSDictionary
-                        
-                        let picture = Picture.init(key: pictureInfo.key, dict: picture_dict, userDict: userDict)
-                        self.pictures.insert(picture, atIndex: 0)
-                        self.addPictureChangesListener(picture)
-                        self.tableView.reloadData()
-                    })
+                    if !pictureInfo.value.isEqual(NSNull()){
+                        let picture_dict = pictureInfo.value as! NSDictionary
+                        let pictureUserRef = DataServices.dataService.USER_REF.childByAppendingPath(picture_dict["user_uid"] as! String)
+                        pictureUserRef.observeSingleEventOfType(.Value, withBlock: {userInfo in
+                            let userDict = userInfo.value as! NSDictionary
+                            
+                            let picture = Picture.init(key: pictureInfo.key, dict: picture_dict, userDict: userDict)
+                            self.pictures.insert(picture, atIndex: 0)
+                            self.addPictureChangesListener(picture)
+                            self.tableView.reloadData()
+                        })
+                    }
                 })
             }
         })
@@ -126,7 +128,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let lbNavTitle = UILabel()
         lbNavTitle.frame = CGRectMake(-20,40,320,40)
         lbNavTitle.textAlignment = NSTextAlignment.Left
-        let attributes = [NSFontAttributeName: UIFont.init(name: "HelveticaNeue-Bold" , size: 18)!]
+        let attributes = [NSFontAttributeName: UIFont.init(name: "Master of Break" , size: 18)!]
         let attributedString = NSAttributedString(string: string, attributes: attributes)
         lbNavTitle.textColor = UIColor.whiteColor()
         lbNavTitle.attributedText = attributedString

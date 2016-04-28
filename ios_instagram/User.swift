@@ -101,7 +101,7 @@ class User{
         let userPicRef = ref.USER_REF.childByAppendingPath(self.userkey).childByAppendingPath("pictures")
         let feedRef = ref.CURRENT_USER_REF.childByAppendingPath("feed")
         userPicRef.observeSingleEventOfType(.Value, withBlock: {snapshot in
-            if snapshot.value != nil {
+            if !snapshot.value.isEqual(NSNull()){
                 let pictures = snapshot.value as! NSDictionary
                 
                 for (pictureUid, timeStamp) in pictures {
@@ -116,10 +116,12 @@ class User{
         let userPicRef = ref.USER_REF.childByAppendingPath(self.userkey).childByAppendingPath("pictures")
         let feedRef = ref.CURRENT_USER_REF.childByAppendingPath("feed")
         userPicRef.observeSingleEventOfType(.Value, withBlock: {snapshot in
-            let pictures = snapshot.value as! NSDictionary
-            
-            for (pictureUid, _) in pictures {
-                feedRef.childByAppendingPath(pictureUid as! String).removeValue()
+            if !snapshot.value.isEqual(NSNull()){
+                let pictures = snapshot.value as! NSDictionary
+                
+                for (pictureUid, _) in pictures {
+                    feedRef.childByAppendingPath(pictureUid as! String).removeValue()
+                }
             }
         })
     }

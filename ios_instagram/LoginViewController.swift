@@ -21,8 +21,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor=UIColor.lightGrayColor()
+       self.notificationLabel.font = UIFont(name: "Master of Break", size: 30)
     }
+    
     
     func randomColor() -> UIColor{
         let red = CGFloat(drand48())
