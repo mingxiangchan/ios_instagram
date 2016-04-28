@@ -47,11 +47,11 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
             let user = User.init(key: snapshot.key, dict: userDict)
             self.user = user
             self.loadPersonalInfo()
-            self.loadImages()
             if !self.checkIfLoggedInUser(){
                 self.toggleFollowButton()
             }
         })
+        self.loadImages()
     }
     
     @IBAction func onEditFollowingButtonPressed(sender: AnyObject) {

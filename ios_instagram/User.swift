@@ -80,6 +80,8 @@ class User{
         // add current user as follower for selected user
         let followerRef = DataServices.dataService.USER_REF.childByAppendingPath(self.userkey).childByAppendingPath("followers")
         followerRef.updateChildValues([currentUserUid: "true"])
+        self.addUsersPicturesIntoFeed()
+        
     }
     
     func unFollowThisUser(){
@@ -91,6 +93,40 @@ class User{
         // remove current user as follower for selected user
         let followerRef = DataServices.dataService.USER_REF.childByAppendingPath(self.userkey).childByAppendingPath("followers")
         followerRef.childByAppendingPath(currentUserUid).removeValue()
+        self.removeUsersPicturesFromFeed()
+    }
+    
+    func addUsersPicturesIntoFeed(){
+        let ref = DataServices.dataService
+        let userPicRef = ref.USER_REF.childByAppendingPath(self.userkey).childByAppendingPath("pictures")
+        let feedRef = ref.CURRENT_USER_REF.childByAppendingPath("feed")
+        userPicRef.observeSingleEventOfType(.Value, withBlock: {snapshot in
+            let pictures = snapshot.value as! NSDictionary
+            
+            for (pictureUid, timeStamp) in pictures {
+                feedRef.updateChildValues([pictureUid as! String: timeStamp as! String])
+            }
+        })
+        
+        feedRef.observeEventType(.ChildAdded, withBlock: {snapshot in
+            print(snapshot)
+        })
+    }
+    
+    func removeUsersPicturesFromFeed(){
+        let ref = DataServices.dataService
+        let userPicRef = ref.USER_REF.childByAppendingPath(self.userkey).childByAppendingPath("pictures")
+        let feedRef = ref.CURRENT_USER_REF.childByAppendingPath("feed")
+        userPicRef.observeSingleEventOfType(.Value, withBlock: {snapshot in
+            let pictures = snapshot.value as! NSDictionary
+            
+            for (pictureUid, _) in pictures {
+                feedRef.childByAppendingPath(pictureUid as! String).removeValue()
+            }
+        })
+        feedRef.observeEventType(.ChildRemoved, withBlock: {snapshot in
+            print(snapshot)
+        })
     }
 }
 
