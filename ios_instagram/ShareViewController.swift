@@ -31,13 +31,24 @@ class ShareViewController: UIViewController {
         let ref = DataServices.dataService
         let picRef = ref.BASE_REF.childByAppendingPath("pictures").childByAutoId()
         picRef.setValue(pictDict)
-        picRef.childByAppendingPath("created_at").setValue(FirebaseServerValue.timestamp())
+        let createdAt = FirebaseServerValue.timestamp()
+        picRef.childByAppendingPath("created_at").setValue(createdAt)
         
         // add image to belong to current_user
-        let currentUserID = NSUserDefaults.standardUserDefaults().valueForKey("uid") as? String
+        let currentUserID = Cookies.currentUserUid()
         let userRef = ref.USER_REF.childByAppendingPath(currentUserID)
         userRef.childByAppendingPath("pictures").updateChildValues([picRef.key:"true"])
         self.performSegueWithIdentifier("unwindToHomeSegue", sender: self)
+        
+        // add image to all user's follower's feeds
+        let followersRef = userRef.childByAppendingPath("followers")
+        followersRef.observeEventType(.Value, withBlock: {followersInfo in
+            let followers = followersInfo.value as! NSDictionary
+            for (followerId, _) in followers {
+                let followerRef = ref.USER_REF.childByAppendingPath(followerId as! String)
+                followerRef.childByAppendingPath("feed").updateChildValues([picRef.key: createdAt])
+            }
+        })
     }
     
     func loadTitle(string: String)->Void{
