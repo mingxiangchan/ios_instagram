@@ -19,21 +19,8 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor=UIColor.lightGrayColor()
-        let currentUserID = NSUserDefaults.standardUserDefaults().valueForKey("uid") as? String
-        if currentUserID != nil{
-            if DataServices.dataService.USER_REF.childByAppendingPath(currentUserID)!.authData != nil{
-                notificationLabel.text = "You're Signed up // DO"
-                self.performSegueWithIdentifier("redirectToTabRoutingSegue", sender: self)
-            }
-        }
     }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(true)
-        if ((NSUserDefaults.standardUserDefaults().valueForKey("uid") as? String) != nil){
-            self.performSegueWithIdentifier("redirectToTabRoutingSegue", sender: self)
-        }
-    }
+
     
     @IBAction func onLoginButtonPressed(sender: UIButton) {
         if let email = emailTextField.text, password = passwordtextField.text{
@@ -42,7 +29,9 @@ class LoginViewController: UIViewController {
                 if (error == nil){
                     NSUserDefaults.standardUserDefaults().setValue(authData.uid, forKey: "uid")
                     self.notificationLabel.text = "You're logged in // DO SEGUE"
-                    self.performSegueWithIdentifier("redirectToTabRoutingSegue", sender: self)
+                    let appDelegateTemp = UIApplication.sharedApplication().delegate
+                    
+                    appDelegateTemp!.window!!.rootViewController = UIStoryboard.init(name: "TabRouting", bundle: NSBundle.mainBundle()).instantiateInitialViewController()
                 }else{
                     print(error)
                     self.notificationLabel.text = "something's wrong"

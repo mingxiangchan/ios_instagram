@@ -18,6 +18,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         Firebase.defaultConfig().persistenceEnabled = true
+        if authenticatedUser() {
+            self.window!.rootViewController = UIStoryboard.init(name: "TabRouting", bundle: NSBundle.mainBundle()).instantiateInitialViewController()
+        }
+        else
+        {
+            let rootController = UIStoryboard.init(name: "Main", bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier("LoginViewController")
+            let navigation = UINavigationController.init(rootViewController: rootController)
+            self.window!.rootViewController = navigation;
+        }
         return true
     }
 
@@ -41,6 +50,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func authenticatedUser() -> Bool{
+        if NSUserDefaults.standardUserDefaults().valueForKey("uid") != nil {
+            return true
+        }
+        return false
     }
 
 
