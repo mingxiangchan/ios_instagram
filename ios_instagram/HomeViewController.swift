@@ -14,6 +14,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.loadTitle("FEED")
         self.tableView.estimatedRowHeight = 30
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.loadFeed()
@@ -107,4 +108,16 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    func loadTitle(string: String)->Void{
+        let lbNavTitle = UILabel()
+        lbNavTitle.frame = CGRectMake(-20,40,320,40)
+        lbNavTitle.textAlignment = NSTextAlignment.Left
+        let attributes = [NSFontAttributeName: UIFont.init(name: "HelveticaNeue-Bold" , size: 18)!]
+        let attributedString = NSAttributedString(string: string, attributes: attributes)
+        lbNavTitle.textColor = UIColor.whiteColor()
+        lbNavTitle.attributedText = attributedString
+        self.navigationItem.titleView = lbNavTitle;
+        self.navigationController?.navigationBar.barTintColor = PRIMARY_BLUE_COLOR
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+    }
 }

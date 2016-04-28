@@ -24,6 +24,8 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.loadDotsButton()
+        self.loadBackButton()
         self.collectionView.backgroundColor = UIColor.clearColor()
         self.editFollowingButton.layer.cornerRadius = 10
         self.checkUser()
@@ -120,28 +122,54 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     func loadTitle(string: String)->Void{
         let lbNavTitle = UILabel()
-        lbNavTitle.frame = CGRectMake(0,40,320,40)
+        lbNavTitle.frame = CGRectMake(-20,40,320,40)
         lbNavTitle.textAlignment = NSTextAlignment.Left
-        lbNavTitle.text = string
+        let attributes = [NSFontAttributeName: UIFont.init(name: "HelveticaNeue-Bold" , size: 18)!]
+        let attributedString = NSAttributedString(string: string, attributes: attributes)
+        lbNavTitle.textColor = UIColor.whiteColor()
+        lbNavTitle.attributedText = attributedString
         self.navigationItem.titleView = lbNavTitle;
+        self.navigationController?.navigationBar.barTintColor = PRIMARY_BLUE_COLOR
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+    }
+    
+    func loadBackButton(){
+        let backButton = UIBarButtonItem()
+        backButton.title = ""
+        self.navigationController!.navigationBar.topItem!.backBarButtonItem = backButton
+    }
+    
+    func loadDotsButton(){
+        let button: UIButton = UIButton(type: .Custom)
+        button.frame = CGRectMake(0, 0, 30, 30)
+        button.setImage(UIImage(named: "three_dots_white"), forState: UIControlState.Normal)
+        button.contentMode = UIViewContentMode.ScaleAspectFit
+        button.addTarget(self, action: #selector(ProfileViewController.onDotsButtonPressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        let barButton = UIBarButtonItem(customView: button)
+        self.navigationItem.rightBarButtonItem = barButton
     }
     
     func toggleFollowButton(){
-        self.editFollowingButton.layer.borderColor = UIColor.blueColor().CGColor
+        self.editFollowingButton.layer.borderColor = PRIMARY_BLUE_COLOR.CGColor
         self.editFollowingButton.layer.borderWidth = 2
         
         self.user.checkIfFollowingThisUser({checkResult in
             if checkResult{
-                self.editFollowingButton.backgroundColor = UIColor.blueColor()
+                self.editFollowingButton.backgroundColor = PRIMARY_BLUE_COLOR
                 self.editFollowingButton.setTitle("Following", forState: UIControlState.Normal)
                 self.editFollowingButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
             } else {
                 self.editFollowingButton.backgroundColor = UIColor.clearColor()
                 self.editFollowingButton.setTitle("Follow", forState: UIControlState.Normal)
-                self.editFollowingButton.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
+                self.editFollowingButton.setTitleColor(PRIMARY_BLUE_COLOR, forState: UIControlState.Normal)
             }
         })
     }
+    
+    @IBAction func onDotsButtonPressed(sender: AnyObject){
+        self.performSegueWithIdentifier("toOptionsSegue", sender: self)
+    }
+
     
     @IBAction func unwindToMyProfile(segue: UIStoryboardSegue) {}
 

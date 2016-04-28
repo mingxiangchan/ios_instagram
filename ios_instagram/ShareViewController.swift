@@ -17,6 +17,7 @@ class ShareViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.loadTitle("SHARE TO FOLLOWERS")
+        self.loadBackButton()
         self.imageView.image = self.image
     }
 
@@ -53,10 +54,18 @@ class ShareViewController: UIViewController {
     
     func loadTitle(string: String)->Void{
         let lbNavTitle = UILabel()
-        lbNavTitle.frame = CGRectMake(0,40,320,40)
+        lbNavTitle.frame = CGRectMake(-20,40,320,40)
         lbNavTitle.textAlignment = NSTextAlignment.Left
-        lbNavTitle.text = string
+        let attributes = [NSFontAttributeName: UIFont.init(name: "HelveticaNeue-Bold" , size: 18)!]
+        let attributedString = NSAttributedString(string: string, attributes: attributes)
+        lbNavTitle.textColor = UIColor.whiteColor()
+        lbNavTitle.attributedText = attributedString
         self.navigationItem.titleView = lbNavTitle;
+        self.navigationController?.navigationBar.barTintColor = PRIMARY_BLUE_COLOR
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+    }
+    
+    func loadBackButton(){
         let backButton = UIBarButtonItem()
         backButton.title = ""
         self.navigationController!.navigationBar.topItem!.backBarButtonItem = backButton
