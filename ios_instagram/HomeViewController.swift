@@ -133,5 +133,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.navigationItem.titleView = lbNavTitle;
         self.navigationController?.navigationBar.barTintColor = PRIMARY_BLUE_COLOR
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.tabBarController?.tabBar.barTintColor = UIColor.blackColor()
     }
 }

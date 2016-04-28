@@ -468,11 +468,13 @@
             </objects>
             <point key="canvasLocation" x="1408" y="853"/>
         </scene>
-        <!--My Profile-->
+        <!--Navigation Controller-->
         <scene sceneID="fjX-DD-m9B">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gaP-di-dzC" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Profile" id="p1Y-x1-3mT"/>
+                    <tabBarItem key="tabBarItem" title="" image="user_white" id="p1Y-x1-3mT">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="IWu-fA-LUJ">
@@ -491,5 +493,6 @@
     </scenes>
     <resources>
         <image name="Shitigram Logo" width="162" height="157"/>
+        <image name="user_white" width="32" height="32"/>
     </resources>
 </document>

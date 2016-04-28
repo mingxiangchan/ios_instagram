@@ -19,7 +19,6 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
         self.loadTitle("GALLERY")
-        self.loadBackButton()
         self.loadImagePicker()
     }
 
@@ -127,12 +126,11 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
         self.navigationItem.titleView = lbNavTitle;
         self.navigationController?.navigationBar.barTintColor = PRIMARY_BLUE_COLOR
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-    }
-    
-    func loadBackButton(){
-        let backButton = UIBarButtonItem()
-        backButton.title = ""
-        self.navigationController!.navigationBar.topItem!.backBarButtonItem = backButton
+        for item in self.tabBarController!.tabBar.items!
+        {
+            item.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "HelveticaNeue", size: 16)!], forState: .Normal)
+            item.titlePositionAdjustment = UIOffsetMake(0, -10)
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -147,5 +145,7 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
             }
         }
     }
+    
+    
 
 }

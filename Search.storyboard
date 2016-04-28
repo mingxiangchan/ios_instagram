@@ -64,11 +64,13 @@
             </objects>
             <point key="canvasLocation" x="455" y="667"/>
         </scene>
-        <!--Search-->
+        <!--Navigation Controller-->
         <scene sceneID="VoY-LB-8m9">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sjX-Iz-ePy" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Search" id="ZhU-2q-UG8"/>
+                    <tabBarItem key="tabBarItem" title="" image="search_white" id="ZhU-2q-UG8">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="V6H-qK-mHC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -84,4 +86,7 @@
             <point key="canvasLocation" x="-357" y="675"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="search_white" width="32" height="32"/>
+    </resources>
 </document>
