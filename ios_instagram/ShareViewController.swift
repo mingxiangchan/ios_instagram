@@ -26,7 +26,8 @@ class ShareViewController: UIViewController {
         let imageString = ImageResizer().encodeToString(image!, maxFileSizeinKB: 500)
         let caption = self.captionTextField.text!
         let pictDict = ["image_data": imageString,
-                        "caption": caption]
+                        "caption": caption,
+                        "user_uid": Cookies.currentUserUid()]
         
         // add image to pictures
         let ref = DataServices.dataService
