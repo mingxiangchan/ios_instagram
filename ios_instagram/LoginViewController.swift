@@ -10,15 +10,62 @@ import UIKit
 import Firebase
 
 class LoginViewController: UIViewController {
+    
+    @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var emailTextField: UITextField!
     
     @IBOutlet weak var notificationLabel: UILabel!
     @IBOutlet weak var passwordtextField: UITextField!
+    var gradient: CAGradientLayer!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor=UIColor.lightGrayColor()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.adjustLoginButton(0.2)
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        // Sets shadow (line below the bar) to a blank image
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        // Sets the translucent background color
+        self.navigationController?.navigationBar.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
+        // Set translucent. (Default value is already true, so this can be removed if desired.)
+        self.navigationController?.navigationBar.translucent = true
+        self.gradient = CAGradientLayer()
+        self.gradient.frame = self.view.bounds
+        self.gradient.colors =
+            [UIColor.purpleColor().CGColor, UIColor.blueColor().CGColor]
+        self.view.layer.insertSublayer(self.gradient, atIndex: 0)
+        self.animateLayer(UIColor.purpleColor().CGColor, bottomColor: UIColor.blueColor().CGColor)
+    }
+    
+    func adjustLoginButton(alpha: CGFloat){
+        self.loginButton.layer.borderColor = UIColor.whiteColor().colorWithAlphaComponent(0.5).CGColor
+        self.loginButton.layer.borderWidth = 2
+        self.loginButton.layer.cornerRadius = 5
+        self.loginButton.setTitleColor(UIColor.whiteColor().colorWithAlphaComponent(alpha), forState: .Normal)
+    }
+    
+    func animateLayer(topColor: CGColor, bottomColor: CGColor){
+        CATransaction.begin()
+        let fromColors = self.gradient.colors;
+        let toColors = [bottomColor, topColor]
+        self.gradient.colors = toColors
+        let animation = CABasicAnimation.init(keyPath: "colors")
+        animation.fromValue             = fromColors;
+        animation.toValue               = toColors;
+        animation.duration              = 5.00;
+        animation.removedOnCompletion   = true;
+        animation.fillMode              = kCAFillModeForwards;
+        animation.timingFunction        = CAMediaTimingFunction.init(name: kCAMediaTimingFunctionLinear)
+        animation.delegate              = self;
+        CATransaction.setCompletionBlock({ self.animateLayer(bottomColor, bottomColor: topColor)})
+        self.gradient.addAnimation(animation, forKey: "animateGradient")
+        CATransaction.commit()
+        
     }
 
     

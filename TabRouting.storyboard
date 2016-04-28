@@ -67,6 +67,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="camera_white" width="64" height="64"/>
+        <image name="camera_white" width="32" height="32"/>
     </resources>
 </document>
