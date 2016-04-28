@@ -15,6 +15,9 @@ class OptionsViewController: UIViewController {
         self.loadTitle("OPTIONS")
         // Do any additional setup after loading the view.
     }
+    @IBAction func onEditProfileButtonPressed(sender: AnyObject) {
+        self.performSegueWithIdentifier("unwindToMyProfileSegue", sender: self)
+    }
 
     @IBAction func onLogOutButtonPressed(sender: AnyObject) {
         NSUserDefaults.standardUserDefaults().removeObjectForKey("uid")
