@@ -134,4 +134,18 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
         backButton.title = ""
         self.navigationController!.navigationBar.topItem!.backBarButtonItem = backButton
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.resetAllTabs()
+    }
+    
+    func resetAllTabs() {
+        for controller: AnyObject in self.tabBarController!.viewControllers! {
+            if controller.isMemberOfClass(UINavigationController.self) {
+                controller.popToRootViewControllerAnimated(false)
+            }
+        }
+    }
+
 }
