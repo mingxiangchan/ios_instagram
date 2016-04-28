@@ -32,8 +32,9 @@ class SignUpViewController: UIViewController {
 
                     NSUserDefaults.standardUserDefaults().setValue(uid, forKey: "uid")
                     
-                    print("signedUp")
-                    self.performSegueWithIdentifier("redirectToTabRoutingSegue", sender: self)
+                    let appDelegateTemp = UIApplication.sharedApplication().delegate
+                    
+                    appDelegateTemp!.window!!.rootViewController = UIStoryboard.init(name: "TabRouting", bundle: NSBundle.mainBundle()).instantiateInitialViewController()
                 }
                 else{
                     let alert = UIAlertController(title: "Opps !", message: "Your email is taken or invalid", preferredStyle: .Alert)
