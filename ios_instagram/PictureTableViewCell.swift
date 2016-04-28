@@ -9,6 +9,7 @@
 import UIKit
 
 class PictureTableViewCell: UITableViewCell {
+    @IBOutlet weak var createdAtLabel: UILabel!
     @IBOutlet weak var likesLabel: UILabel!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var mainImageView: UIImageView!
@@ -38,6 +39,9 @@ class PictureTableViewCell: UITableViewCell {
                 self.likeButton.setImage(UIImage(named: "heart"), forState: UIControlState.Normal)
             }
         })
+        
+        // set createdAt label
+        self.setCreatedAt(picture.createdAt)
     }
     
     func setImageView(image: UIImage) -> Void{
@@ -54,6 +58,15 @@ class PictureTableViewCell: UITableViewCell {
     func setCaption(caption: NSAttributedString)-> Void{
         self.captionLabel.hidden = false
         self.captionLabel.attributedText = caption
+    }
+    
+    func setCreatedAt(createdAt: NSDate){
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = NSDateFormatterStyle.LongStyle
+        formatter.timeStyle = .MediumStyle
+        
+        let dateString = formatter.stringFromDate(createdAt)
+        self.createdAtLabel.text = dateString
     }
     
     func hideCaption(){

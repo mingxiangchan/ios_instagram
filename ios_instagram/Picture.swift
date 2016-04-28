@@ -14,6 +14,7 @@ class Picture {
     var user: NSDictionary?
     var caption: String?
     var numLikes: Int!
+    var createdAt: NSDate!
     private let _pictureKey: String!
     
     init(key: String, dict: NSDictionary, userDict: NSDictionary?=nil){
@@ -36,6 +37,10 @@ class Picture {
         
         if let imageCaption = dict["caption"] as? String{
             self.caption = imageCaption
+        }
+        
+        if let createdAt = dict["created_at"] as? NSTimeInterval{
+            self.createdAt = NSDate(timeIntervalSince1970: createdAt/1000)
         }
     }
     
