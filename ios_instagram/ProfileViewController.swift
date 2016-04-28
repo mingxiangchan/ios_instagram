@@ -83,6 +83,8 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         let imageWidth = (self.collectionView.frame.size.width - 15)/3
         imageView.frame = CGRectMake(0, 0, imageWidth, imageWidth)
         imageView.image = picture.image
+        imageView.contentMode = UIViewContentMode.ScaleAspectFill
+        imageView.clipsToBounds = true
         cell.addSubview(imageView)
         return cell
     }
@@ -111,10 +113,12 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         ref.observeEventType(.ChildAdded, withBlock: { pictureIndex in
             let pictureRef = DataServices.dataService.PICTURE_REF.childByAppendingPath(pictureIndex.key)
             pictureRef.observeSingleEventOfType(.Value, withBlock: { pictureInfo in
-                let pictureDict = pictureInfo.value as? NSDictionary
-                let picture = Picture(key: pictureInfo.key, dict: pictureDict!)
-                self.pictures.append(picture)
-                self.collectionView.reloadData()
+                if !pictureInfo.value.isEqual(NSNull()) {
+                    let pictureDict = pictureInfo.value as? NSDictionary
+                    let picture = Picture(key: pictureInfo.key, dict: pictureDict!)
+                    self.pictures.append(picture)
+                    self.collectionView.reloadData()
+                }
             })
         })
     
@@ -169,6 +173,22 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBAction func onDotsButtonPressed(sender: AnyObject){
         self.performSegueWithIdentifier("toOptionsSegue", sender: self)
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        if self.checkIfLoggedInUser(){
+            self.resetAllTabs()
+        }
+    }
+    
+    func resetAllTabs() {
+        for controller: AnyObject in self.tabBarController!.viewControllers! {
+            if controller.isMemberOfClass(UINavigationController.self) {
+                controller.popToRootViewControllerAnimated(false)
+            }
+        }
+    }
+
 
     
     @IBAction func unwindToMyProfile(segue: UIStoryboardSegue) {}

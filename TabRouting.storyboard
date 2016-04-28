@@ -18,7 +18,6 @@
                         <segue destination="hNz-uS-wY4" kind="relationship" relationship="viewControllers" id="UWZ-yJ-qOe"/>
                         <segue destination="4oj-pg-cmn" kind="relationship" relationship="viewControllers" id="ISy-da-4K9"/>
                         <segue destination="NsX-Yu-N87" kind="relationship" relationship="viewControllers" id="xdu-hC-gA7"/>
-                        <segue destination="K6A-mq-c8c" kind="relationship" relationship="viewControllers" id="hrt-KQ-aBY"/>
                         <segue destination="pWK-3m-dfB" kind="relationship" relationship="viewControllers" id="iBy-ir-5dS"/>
                     </connections>
                 </tabBarController>
@@ -30,7 +29,7 @@
         <scene sceneID="jnt-U9-rT8">
             <objects>
                 <viewControllerPlaceholder storyboardName="UploadingImages" id="NsX-Yu-N87" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Fg6-KI-Sa6"/>
+                    <tabBarItem key="tabBarItem" title="" image="camera_white" id="Fg6-KI-Sa6"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="11y-YL-sf5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -66,15 +65,8 @@
             </objects>
             <point key="canvasLocation" x="-37.5" y="-143"/>
         </scene>
-        <!--Activity-->
-        <scene sceneID="51u-t0-zTN">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Activity" id="K6A-mq-c8c" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="yfH-vg-35W"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="M4i-Ww-d1b" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-35.5" y="81"/>
-        </scene>
     </scenes>
+    <resources>
+        <image name="camera_white" width="32" height="32"/>
+    </resources>
 </document>

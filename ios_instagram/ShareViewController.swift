@@ -45,10 +45,12 @@ class ShareViewController: UIViewController {
         // add image to all user's follower's feeds
         let followersRef = userRef.childByAppendingPath("followers")
         followersRef.observeEventType(.Value, withBlock: {followersInfo in
-            let followers = followersInfo.value as! NSDictionary
-            for (followerId, _) in followers {
-                let followerRef = ref.USER_REF.childByAppendingPath(followerId as! String)
-                followerRef.childByAppendingPath("feed").updateChildValues([picRef.key: createdAt])
+            if !followersInfo.value.isEqual(NSNull()){
+                let followers = followersInfo.value as! NSDictionary
+                for (followerId, _) in followers {
+                    let followerRef = ref.USER_REF.childByAppendingPath(followerId as! String)
+                    followerRef.childByAppendingPath("feed").updateChildValues([picRef.key: createdAt])
+                }
             }
         })
     }
@@ -69,6 +71,7 @@ class ShareViewController: UIViewController {
     func loadBackButton(){
         let backButton = UIBarButtonItem()
         backButton.title = ""
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController!.navigationBar.topItem!.backBarButtonItem = backButton
     }
 

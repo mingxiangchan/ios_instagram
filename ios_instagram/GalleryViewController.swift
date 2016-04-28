@@ -19,7 +19,6 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
         self.loadTitle("GALLERY")
-        self.loadBackButton()
         self.loadImagePicker()
     }
 
@@ -80,8 +79,10 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PhotoCell", forIndexPath: indexPath)
         let image = self.images[indexPath.row]
         let imageView = UIImageView()
-        let imageWidth = (self.view.frame.size.width - 20)/4
+        let imageWidth = (self.view.frame.size.width - 8)/4
         imageView.frame = CGRectMake(0, 0, imageWidth, imageWidth)
+        imageView.contentMode = UIViewContentMode.ScaleAspectFill
+        imageView.clipsToBounds = true
         imageView.image = image
         // set cell to semi transparent if selected
         if indexPath.row == self.currentOverlayIndex {
@@ -94,7 +95,7 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         // set size for collectionviewcell to 1/4th of page with 10 line spacing
-        let imageWidth = (self.view.frame.size.width - 20)/4
+        let imageWidth = (self.view.frame.size.width - 8)/4
         return CGSizeMake(imageWidth, imageWidth)
     }
     
@@ -106,7 +107,11 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
-        return 5
+        return 2
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 2
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -127,11 +132,26 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
         self.navigationItem.titleView = lbNavTitle;
         self.navigationController?.navigationBar.barTintColor = PRIMARY_BLUE_COLOR
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        for item in self.tabBarController!.tabBar.items!
+        {
+            item.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "HelveticaNeue", size: 16)!], forState: .Normal)
+            item.titlePositionAdjustment = UIOffsetMake(0, -10)
+        }
     }
     
-    func loadBackButton(){
-        let backButton = UIBarButtonItem()
-        backButton.title = ""
-        self.navigationController!.navigationBar.topItem!.backBarButtonItem = backButton
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.resetAllTabs()
     }
+    
+    func resetAllTabs() {
+        for controller: AnyObject in self.tabBarController!.viewControllers! {
+            if controller.isMemberOfClass(UINavigationController.self) {
+                controller.popToRootViewControllerAnimated(false)
+            }
+        }
+    }
+    
+    
+
 }

@@ -17,7 +17,6 @@
 		B92730391CCF3EF100C50CC8 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92730381CCF3EF100C50CC8 /* Comment.swift */; };
 		B9794C031CCDED79009CBD2A /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9794C021CCDED79009CBD2A /* Profile.storyboard */; };
 		B9A0A1B31CCDF31000C2F20A /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9A0A1B21CCDF31000C2F20A /* Search.storyboard */; };
-		B9A0A1B51CCDF31E00C2F20A /* Activity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9A0A1B41CCDF31E00C2F20A /* Activity.storyboard */; };
 		B9ACF5781CCA11C600D6EB3B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ACF5771CCA11C600D6EB3B /* SignUpViewController.swift */; };
 		B9C0A5481CC9E0FB00E30EF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C0A5471CC9E0FB00E30EF1 /* AppDelegate.swift */; };
 		B9C0A54A1CC9E0FB00E30EF1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C0A5491CC9E0FB00E30EF1 /* LoginViewController.swift */; };
@@ -49,7 +48,6 @@
 		B92730381CCF3EF100C50CC8 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		B9794C021CCDED79009CBD2A /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		B9A0A1B21CCDF31000C2F20A /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = SOURCE_ROOT; };
-		B9A0A1B41CCDF31E00C2F20A /* Activity.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Activity.storyboard; sourceTree = "<group>"; };
 		B9ACF5771CCA11C600D6EB3B /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		B9C0A5441CC9E0FB00E30EF1 /* ios_instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ios_instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9C0A5471CC9E0FB00E30EF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -186,7 +184,6 @@
 			isa = PBXGroup;
 			children = (
 				B9C0A55B1CC9E12D00E30EF1 /* TabRouting.storyboard */,
-				B9A0A1B41CCDF31E00C2F20A /* Activity.storyboard */,
 				B9A0A1B21CCDF31000C2F20A /* Search.storyboard */,
 				B9794C021CCDED79009CBD2A /* Profile.storyboard */,
 				B9D726371CCDE74E00DC8012 /* Home.storyboard */,
@@ -260,7 +257,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9C0A5521CC9E0FB00E30EF1 /* LaunchScreen.storyboard in Resources */,
-				B9A0A1B51CCDF31E00C2F20A /* Activity.storyboard in Resources */,
 				B9C0A54F1CC9E0FB00E30EF1 /* Assets.xcassets in Resources */,
 				B9C0A54D1CC9E0FB00E30EF1 /* Main.storyboard in Resources */,
 				B9D726381CCDE74E00DC8012 /* Home.storyboard in Resources */,

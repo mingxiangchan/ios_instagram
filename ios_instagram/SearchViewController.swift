@@ -103,6 +103,20 @@ class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDe
         self.navigationController?.navigationBar.barTintColor = PRIMARY_BLUE_COLOR
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.resetAllTabs()
+    }
+    
+    func resetAllTabs() {
+        for controller: AnyObject in self.tabBarController!.viewControllers! {
+            if controller.isMemberOfClass(UINavigationController.self) {
+                controller.popToRootViewControllerAnimated(false)
+            }
+        }
+    }
+
 
 }
 extension SearchViewController:UISearchResultsUpdating{

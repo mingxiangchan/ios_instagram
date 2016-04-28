@@ -303,11 +303,13 @@
             </objects>
             <point key="canvasLocation" x="1544" y="-310"/>
         </scene>
-        <!--Home-->
+        <!--Navigation Controller-->
         <scene sceneID="Der-Bu-clm">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Rhv-4E-tOD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" id="Rze-OT-a82"/>
+                    <tabBarItem key="tabBarItem" title="" image="home_white" id="Rze-OT-a82">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="uFb-oq-MxW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -326,6 +328,7 @@
     <resources>
         <image name="arrows (1)" width="32" height="32"/>
         <image name="heart" width="64" height="64"/>
+        <image name="home_white" width="32" height="32"/>
         <image name="shape" width="32" height="32"/>
     </resources>
 </document>

@@ -6,11 +6,13 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Uploading Images-->
+        <!--Navigation Controller-->
         <scene sceneID="Is8-cM-Rsb">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="hDC-k1-pmx" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Uploading Images" id="DQW-9p-Wfs"/>
+                    <tabBarItem key="tabBarItem" title="" image="camera_white" id="DQW-9p-Wfs">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="sO6-Xy-J1s">
@@ -157,7 +159,7 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Y54-xb-Lyc" firstAttribute="top" secondItem="qxa-Ik-uNk" secondAttribute="bottom" id="387-LV-yhd"/>
                             <constraint firstItem="Y54-xb-Lyc" firstAttribute="leading" secondItem="IJd-kM-SvV" secondAttribute="leadingMargin" id="Acd-hO-3Kc"/>
@@ -181,7 +183,7 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Gallery" id="Lab-9Z-Sdg">
-                        <barButtonItem key="leftBarButtonItem" title="&lt; Home" id="55b-Bp-A7Q">
+                        <barButtonItem key="leftBarButtonItem" title="&lt; " id="55b-Bp-A7Q">
                             <connections>
                                 <segue destination="aIV-9q-Ja5" kind="unwind" identifier="unwindToHomeSegue" unwindAction="unwindToHome:" id="jOI-aJ-8Xz"/>
                             </connections>
@@ -221,11 +223,11 @@
             </objects>
             <point key="canvasLocation" x="786" y="310"/>
         </scene>
-        <!--Gallery-->
+        <!--GALLERY-->
         <scene sceneID="v4q-Ra-wbO">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DIg-rn-QCo" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Gallery" id="XyL-dI-lx4"/>
+                    <tabBarItem key="tabBarItem" title="GALLERY" id="XyL-dI-lx4"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fKr-aP-psV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -240,11 +242,11 @@
             </objects>
             <point key="canvasLocation" x="1606" y="-18"/>
         </scene>
-        <!--Photo-->
+        <!--PHOTO-->
         <scene sceneID="MAG-F2-ued">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="orZ-dK-grl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Photo" id="Gyd-J7-qH7"/>
+                    <tabBarItem key="tabBarItem" title="PHOTO" id="Gyd-J7-qH7"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vuZ-Rp-emv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -260,4 +262,7 @@
             <point key="canvasLocation" x="1606" y="643"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="camera_white" width="32" height="32"/>
+    </resources>
 </document>

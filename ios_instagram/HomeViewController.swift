@@ -19,6 +19,19 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.loadFeed()
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.resetAllTabs()
+    }
+    
+    func resetAllTabs() {
+        for controller: AnyObject in self.tabBarController!.viewControllers! {
+            if controller.isMemberOfClass(UINavigationController.self) {
+                controller.popToRootViewControllerAnimated(false)
+            }
+        }
+    }
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return self.pictures.count
@@ -120,5 +133,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.navigationItem.titleView = lbNavTitle;
         self.navigationController?.navigationBar.barTintColor = PRIMARY_BLUE_COLOR
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.tabBarController?.tabBar.barTintColor = UIColor.blackColor()
     }
 }
