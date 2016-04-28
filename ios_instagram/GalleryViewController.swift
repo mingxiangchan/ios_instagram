@@ -79,8 +79,10 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PhotoCell", forIndexPath: indexPath)
         let image = self.images[indexPath.row]
         let imageView = UIImageView()
-        let imageWidth = (self.view.frame.size.width - 20)/4
+        let imageWidth = (self.view.frame.size.width - 8)/4
         imageView.frame = CGRectMake(0, 0, imageWidth, imageWidth)
+        imageView.contentMode = UIViewContentMode.ScaleAspectFill
+        imageView.clipsToBounds = true
         imageView.image = image
         // set cell to semi transparent if selected
         if indexPath.row == self.currentOverlayIndex {
@@ -93,7 +95,7 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         // set size for collectionviewcell to 1/4th of page with 10 line spacing
-        let imageWidth = (self.view.frame.size.width - 20)/4
+        let imageWidth = (self.view.frame.size.width - 8)/4
         return CGSizeMake(imageWidth, imageWidth)
     }
     
@@ -105,7 +107,11 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
-        return 5
+        return 2
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 2
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
