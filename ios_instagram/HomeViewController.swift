@@ -52,7 +52,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func loadPictures(uid: String){
         let userRef = DataServices.dataService.USER_REF.childByAppendingPath(uid)
-        let userPictures = userRef.childByAppendingPath("pictures")
+        let userPictures = userRef.childByAppendingPath("feed")
         userPictures.queryLimitedToLast(10).observeEventType(.ChildAdded, withBlock: { snapshot in
             if snapshot.value != nil {
                 let pictureRef = DataServices.dataService.PICTURE_REF.childByAppendingPath(snapshot.key)

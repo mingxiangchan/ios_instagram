@@ -107,10 +107,6 @@ class User{
                 feedRef.updateChildValues([pictureUid as! String: timeStamp as! String])
             }
         })
-        
-        feedRef.observeEventType(.ChildAdded, withBlock: {snapshot in
-            print(snapshot)
-        })
     }
     
     func removeUsersPicturesFromFeed(){
@@ -123,9 +119,6 @@ class User{
             for (pictureUid, _) in pictures {
                 feedRef.childByAppendingPath(pictureUid as! String).removeValue()
             }
-        })
-        feedRef.observeEventType(.ChildRemoved, withBlock: {snapshot in
-            print(snapshot)
         })
     }
 }
