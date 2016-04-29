@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, PictureTableViewCellDelegate {
     @IBOutlet weak var tableView: UITableView!
@@ -67,23 +68,27 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func loadPictures(uid: String){
         let userRef = DataServices.dataService.USER_REF.childByAppendingPath(uid)
         let userPictures = userRef.childByAppendingPath("feed")
-        userPictures.queryOrderedByValue().queryLimitedToLast(10).observeEventType(.ChildAdded, withBlock: { snapshot in
-            if snapshot.value != nil {
-                let pictureRef = DataServices.dataService.PICTURE_REF.childByAppendingPath(snapshot.key)
-                pictureRef.observeSingleEventOfType(.Value, withBlock: { pictureInfo in
-                    if !pictureInfo.value.isEqual(NSNull()){
-                        let picture_dict = pictureInfo.value as! NSDictionary
-                        let pictureUserRef = DataServices.dataService.USER_REF.childByAppendingPath(picture_dict["user_uid"] as! String)
-                        pictureUserRef.observeSingleEventOfType(.Value, withBlock: {userInfo in
-                            let userDict = userInfo.value as! NSDictionary
-                            
-                            let picture = Picture.init(key: pictureInfo.key, dict: picture_dict, userDict: userDict)
-                            self.pictures.insert(picture, atIndex: 0)
-                            self.addPictureChangesListener(picture)
-                            self.tableView.reloadData()
-                        })
-                    }
-                })
+        userPictures.queryOrderedByValue().queryLimitedToLast(10).observeEventType(.Value, withBlock: { snapshot in
+            self.pictures.removeAll()
+            if !snapshot.value.isEqual(NSNull()) {
+                for picture in snapshot.children.allObjects as! [FDataSnapshot] {
+                    let pictureRef = DataServices.dataService.PICTURE_REF.childByAppendingPath(picture.key)
+                    pictureRef.observeSingleEventOfType(.Value, withBlock: { pictureInfo in
+                        if !pictureInfo.value.isEqual(NSNull()){
+                            let picture_dict = pictureInfo.value as! NSDictionary
+                            let pictureUserRef = DataServices.dataService.USER_REF.childByAppendingPath(picture_dict["user_uid"] as! String)
+                            pictureUserRef.observeSingleEventOfType(.Value, withBlock: {userInfo in
+                                let userDict = userInfo.value as! NSDictionary
+                                
+                                let picture = Picture.init(key: pictureInfo.key, dict: picture_dict, userDict: userDict)
+                                self.pictures.insert(picture, atIndex: 0)
+                                self.addPictureChangesListener(picture)
+                                self.tableView.reloadData()
+                            })
+                        }
+                    })
+                }
+
             }
         })
     }
