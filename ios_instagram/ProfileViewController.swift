@@ -9,6 +9,9 @@
 import UIKit
 
 class ProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    @IBOutlet weak var followingTextLabel: UILabel!
+    @IBOutlet weak var followersTextLabel: UILabel!
+    @IBOutlet weak var postTextLabel: UILabel!
     @IBOutlet weak var followingCountLabel: UILabel!
     @IBOutlet weak var postCountLabel: UILabel!
     @IBOutlet weak var followerCountLabel: UILabel!
@@ -179,6 +182,9 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         if self.checkIfLoggedInUser(){
             self.resetAllTabs()
         }
+        self.postTextLabel.sizeToFit()
+        self.followersTextLabel.sizeToFit()
+        self.followingTextLabel.sizeToFit()
     }
     
     func resetAllTabs() {

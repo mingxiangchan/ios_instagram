@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class CommentsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class CommentsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     @IBOutlet weak var newCommentTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     var picture: Picture!
@@ -155,5 +155,10 @@ class CommentsViewController: UIViewController, UITableViewDelegate, UITableView
         pictureCommentRef.updateChildValues([commentRef.key: "true"])
 
         self.newCommentTextField.text = ""
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

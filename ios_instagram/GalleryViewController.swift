@@ -25,8 +25,9 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
     func loadImagePicker(){
         if self.checkImageAuthorization(){
             let allPhotosOptions = PHFetchOptions()
+            allPhotosOptions.fetchLimit = 20
+            allPhotosOptions.sortDescriptors = [NSSortDescriptor.init(key: "creationDate", ascending: false)]
             let imageManager = PHCachingImageManager()
-            allPhotosOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
             
             let allPhotosResult = PHAsset.fetchAssetsWithMediaType(PHAssetMediaType.Image, options: allPhotosOptions)
             

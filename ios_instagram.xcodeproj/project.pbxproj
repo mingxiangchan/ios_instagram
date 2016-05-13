@@ -29,6 +29,7 @@
 		B9C0A5641CC9ECA900E30EF1 /* UploadingImages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9C0A5631CC9ECA900E30EF1 /* UploadingImages.storyboard */; };
 		B9C0A56A1CC9F43300E30EF1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C0A5691CC9F43300E30EF1 /* HomeViewController.swift */; };
 		B9C0A56E1CC9FC6600E30EF1 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C0A56D1CC9FC6600E30EF1 /* GalleryViewController.swift */; };
+		B9C89E341CE5DDD9004AEE91 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C89E331CE5DDD9004AEE91 /* PhotoViewController.swift */; };
 		B9D726381CCDE74E00DC8012 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9D726371CCDE74E00DC8012 /* Home.storyboard */; };
 		B9E802661CD0ABF200349C71 /* Cookies.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E802651CD0ABF200349C71 /* Cookies.swift */; };
 		B9E802681CD0C06B00349C71 /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E802671CD0C06B00349C71 /* OptionsViewController.swift */; };
@@ -63,6 +64,7 @@
 		B9C0A5631CC9ECA900E30EF1 /* UploadingImages.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UploadingImages.storyboard; sourceTree = "<group>"; };
 		B9C0A5691CC9F43300E30EF1 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B9C0A56D1CC9FC6600E30EF1 /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
+		B9C89E331CE5DDD9004AEE91 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		B9D726371CCDE74E00DC8012 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = SOURCE_ROOT; };
 		B9E802651CD0ABF200349C71 /* Cookies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cookies.swift; sourceTree = "<group>"; };
 		B9E802671CD0C06B00349C71 /* OptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				B92730361CCF3E3000C50CC8 /* CommentsViewController.swift */,
 				1982C6EA1CCF138E00F29B0E /* SearchViewController.swift */,
 				B9E802671CD0C06B00349C71 /* OptionsViewController.swift */,
+				B9C89E331CE5DDD9004AEE91 /* PhotoViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -242,7 +245,12 @@
 				TargetAttributes = {
 					B9C0A5431CC9E0FB00E30EF1 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = VWX3JCB956;
+						DevelopmentTeam = S49GQ6V7KV;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -345,6 +353,7 @@
 				B9ACF5781CCA11C600D6EB3B /* SignUpViewController.swift in Sources */,
 				19294B6A1CCB4CA7007D6240 /* ProfileViewController.swift in Sources */,
 				B9C0A5481CC9E0FB00E30EF1 /* AppDelegate.swift in Sources */,
+				B9C89E341CE5DDD9004AEE91 /* PhotoViewController.swift in Sources */,
 				B9C0A56E1CC9FC6600E30EF1 /* GalleryViewController.swift in Sources */,
 				B92730371CCF3E3000C50CC8 /* CommentsViewController.swift in Sources */,
 				B9C0A55E1CC9E1FF00E30EF1 /* Constants.swift in Sources */,
@@ -474,7 +483,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ios_instagram/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nextacademy.ios-instagram";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nextacademy.ios-instagram52";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -489,7 +498,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ios_instagram/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nextacademy.ios-instagram";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nextacademy.ios-instagram52";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

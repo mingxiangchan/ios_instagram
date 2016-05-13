@@ -108,6 +108,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
     @IBAction func unwindToLogin(segue: UIStoryboardSegue) {}
 }
 

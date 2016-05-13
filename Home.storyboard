@@ -272,6 +272,9 @@
                                                 <exclude reference="Zcv-kw-dOC"/>
                                             </mask>
                                         </variation>
+                                        <connections>
+                                            <outlet property="delegate" destination="kF9-8n-mOM" id="E5R-z2-d05"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

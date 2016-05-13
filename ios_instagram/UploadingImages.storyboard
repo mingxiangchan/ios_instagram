@@ -31,7 +31,7 @@
         <!--Photo-->
         <scene sceneID="eva-tM-7by">
             <objects>
-                <viewController id="vfb-Xu-JLF" sceneMemberID="viewController">
+                <viewController id="vfb-Xu-JLF" customClass="PhotoViewController" customModule="ios_instagram" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NVF-Xx-1ev"/>
                         <viewControllerLayoutGuide type="bottom" id="qcV-QN-ULX"/>
@@ -39,18 +39,36 @@
                     <view key="view" contentMode="scaleToFill" id="JVH-WY-5rR">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CmN-aC-WFG">
+                                <rect key="frame" x="20" y="250" width="560" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="tWD-dX-BjX"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="CmN-aC-WFG" firstAttribute="leading" secondItem="JVH-WY-5rR" secondAttribute="leadingMargin" id="Vnm-qU-IzZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="CmN-aC-WFG" secondAttribute="trailing" id="crh-ib-C9f"/>
+                            <constraint firstItem="CmN-aC-WFG" firstAttribute="centerY" secondItem="JVH-WY-5rR" secondAttribute="centerY" id="h6e-Ka-Yu0"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Photo" id="Hl9-6e-eVQ">
-                        <barButtonItem key="leftBarButtonItem" title="&lt; Home" id="hyJ-Ba-2SA">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Photo" id="qIa-pf-d6k">
+                        <barButtonItem key="rightBarButtonItem" title="→" id="ibe-xg-5GU">
                             <connections>
-                                <segue destination="qID-Ib-O4S" kind="unwind" unwindAction="unwindToHome:" id="DGJ-7B-SRW"/>
+                                <action selector="onNextButtonPressed:" destination="vfb-Xu-JLF" id="qW5-cd-8xM"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="previewImageView" destination="CmN-aC-WFG" id="ryP-Ho-U9q"/>
+                        <segue destination="JaU-EP-r2R" kind="show" identifier="toShareControllerSegue" id="LZ2-Ss-9xQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9aY-8D-Gh0" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="qID-Ib-O4S" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2418" y="643"/>
         </scene>
@@ -77,6 +95,9 @@
                                 <rect key="frame" x="160" y="139" width="420" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="JaU-EP-r2R" id="1q3-BO-fO1"/>
+                                </connections>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b3a-GD-yWr">
                                 <rect key="frame" x="20" y="214" width="560" height="1"/>
@@ -265,4 +286,7 @@
     <resources>
         <image name="camera_white" width="32" height="32"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="LZ2-Ss-9xQ"/>
+    </inferredMetricsTieBreakers>
 </document>

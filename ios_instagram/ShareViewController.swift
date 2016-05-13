@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class ShareViewController: UIViewController {
+class ShareViewController: UIViewController, UITextFieldDelegate {
     var image: UIImage?
     @IBOutlet weak var imageView: UIImageView!
 
@@ -73,6 +73,11 @@ class ShareViewController: UIViewController {
         backButton.title = ""
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController!.navigationBar.topItem!.backBarButtonItem = backButton
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 
 }

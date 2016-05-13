@@ -117,5 +117,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController!.navigationBar.topItem!.backBarButtonItem = backButton
     }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 
 }

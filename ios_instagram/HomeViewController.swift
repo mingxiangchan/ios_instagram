@@ -81,6 +81,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                                 let userDict = userInfo.value as! NSDictionary
                                 
                                 let picture = Picture.init(key: pictureInfo.key, dict: picture_dict, userDict: userDict)
+                                print("inserting image")
+                                print(self.pictures.count)
                                 self.pictures.insert(picture, atIndex: 0)
                                 self.addPictureChangesListener(picture)
                                 self.tableView.reloadData()
@@ -88,8 +90,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                         }
                     })
                 }
-
             }
+            
         })
     }
     
@@ -97,7 +99,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let ref = DataServices.dataService.PICTURE_REF.childByAppendingPath(picture.pictureKey)
         ref.observeEventType(.Value, withBlock: {snapshot in
             let pictureDict = snapshot.value as! NSDictionary
+            //let index = self.pictures.indexOf({$0.pictureKey == picture.pictureKey})
+            //let indexPath = NSIndexPath(forRow: 0, inSection: index!)
             picture.updateFromDict(pictureDict)
+            //self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
             self.tableView.reloadData()
         })
     }
